@@ -147,13 +147,14 @@ st.set_page_config(
 
 # ───────────────────────────────────────────────────────
 # LOAD & SHOW LOGO (top-left)
-logo_path = "walmart_logo.jpg"
+
+logo_path = "assets/walmart_logo.png"  # or "walmart_logo.png" if in root
 with open(logo_path, "rb") as img_file:
     img_bytes = img_file.read()
     b64 = base64.b64encode(img_bytes).decode()
 
 st.markdown(f"""
-    <div style="position: fixed; top: 20px; left: 20px; z-index: 999;">
+    <div style="position: fixed; top: 100px; left: 100px; z-index: 1000;">
         <img src="data:image/png;base64,{b64}" width="100">
     </div>
 """, unsafe_allow_html=True)
@@ -162,11 +163,12 @@ st.markdown(f"""
 # BACKGROUND COLOR
 st.markdown("""
     <style>
-    .main {
-        background-color: #e3f2fd;
+    .stApp {
+        background-color: #e3f2fd;  /* Light blue background */
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 # ───────────────────────────────────────────────────────
 # CENTERED BUTTONS USING COLUMNS
