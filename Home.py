@@ -133,12 +133,135 @@
 #     switch_page("pages/festival_ui.py")
 
 # st.markdown("</div>", unsafe_allow_html=True)
+# import streamlit as st
+# import base64
+# from pathlib import Path
+
+
+# # ───────────────────────────────────────────────────────
+# # PAGE CONFIG
+# st.set_page_config(
+#     page_title="Walmart Forecast Dashboard",
+#     layout="wide",
+#     initial_sidebar_state="collapsed"
+# )
+
+# # ───────────────────────────────────────────────────────
+# # LOAD & SHOW LOGO (top-left)
+
+# logo_path = "walmart_logo.jpg"
+# if Path(logo_path).exists():
+#     with open(logo_path, "rb") as img_file:
+#         img_bytes = img_file.read()
+#         b64 = base64.b64encode(img_bytes).decode()
+#         st.markdown(f"""
+#             <div style="position: fixed; top: 20px; left: 20px; z-index: 999;">
+#                 <img src="data:image/png;base64,{b64}" width="100">
+#             </div>
+#         """, unsafe_allow_html=True)
+# else:
+#     st.warning("⚠️ Logo not found. Please upload 'walmart_logo.jpg' to your repo.")
+
+
+# # ───────────────────────────────────────────────────────
+# # BACKGROUND COLOR
+# st.markdown("""
+#     <style>
+#     .main {
+#         background-color: #e3f2fd;
+#     }
+#     </style>
+# """, unsafe_allow_html=True)
+
+# # ───────────────────────────────────────────────────────
+# # CENTERED BUTTONS USING COLUMNS
+
+# # Add spacing above
+# st.write("")
+# st.write("")
+# st.write("")
+# st.write("")
+# st.write("")
+# st.write("")
+
+# # Create three columns and center everything in the middle one
+# col1, col2, col3 = st.columns([1, 2, 1])
+# with col2:
+#     st.markdown("<h1 style='text-align: center;'>📊 Walmart Forecast Dashboard</h1>", unsafe_allow_html=True)
+#     st.write("##")
+#     if st.button("🌤️  Weather Forecast", use_container_width=True):
+#         st.switch_page("pages/weather_ui.py")
+#     st.write("")
+#     if st.button("🎉  Festival Forecast", use_container_width=True):
+#         st.switch_page("pages/festival_ui.py")
+# import streamlit as st
+# import base64
+# import os
+
+# # ───────────────────────────────────────────────────────
+# # PAGE CONFIG
+# st.set_page_config(
+#     page_title="Walmart Forecast Dashboard",
+#     layout="wide",
+#     initial_sidebar_state="collapsed"
+# )
+
+# # ───────────────────────────────────────────────────────
+# # BACKGROUND COLOR OVERRIDE + LOGO FIX
+# st.markdown("""
+#     <style>
+#     html, body, [data-testid="stApp"] {
+#         background-color: #e3f2fd !important;
+#     }
+#     .logo-container {
+#         position: fixed;
+#         top: 20px;
+#         left: 20px;
+#         z-index: 9999;
+#     }
+#     </style>
+# """, unsafe_allow_html=True)
+
+# # ───────────────────────────────────────────────────────
+# # LOGO DISPLAY (TOP-LEFT WITH FALLBACK)
+# logo_path = "walmart_logo.jpg"
+# if os.path.exists(logo_path):
+#     with open(logo_path, "rb") as img_file:
+#         img_bytes = img_file.read()
+#         b64 = base64.b64encode(img_bytes).decode()
+
+#     st.markdown(
+#         f"""
+#         <div class="logo-container">
+#             <img src="data:image/png;base64,{b64}" width="100">
+#         </div>
+#         """,
+#         unsafe_allow_html=True
+#     )
+# else:
+#     st.warning("🔍 Logo file not found. Please make sure 'walmart_logo.jpg' is in the project folder.")
+
+# # ───────────────────────────────────────────────────────
+# # CENTERED BUTTONS USING COLUMNS
+
+# st.write("")
+# st.write("")
+# st.write("")
+
+# col1, col2, col3 = st.columns([1, 2, 1])
+# with col2:
+#     st.markdown("<h1 style='text-align: center;'>📊 Walmart Forecast Dashboard</h1>", unsafe_allow_html=True)
+#     st.write("##")
+#     if st.button("🌤️  Weather Forecast", use_container_width=True):
+#         st.switch_page("pages/weather_ui.py")
+#     st.write("")
+#     if st.button("🎉  Festival Forecast", use_container_width=True):
+#         st.switch_page("pages/festival_ui.py")
 import streamlit as st
 import base64
-from pathlib import Path
+import os
 
-
-# ───────────────────────────────────────────────────────
+# ───────────────────────────────────────────────
 # PAGE CONFIG
 st.set_page_config(
     page_title="Walmart Forecast Dashboard",
@@ -146,51 +269,73 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# ───────────────────────────────────────────────────────
-# LOAD & SHOW LOGO (top-left)
-
-logo_path = "walmart_logo.jpg"
-if Path(logo_path).exists():
-    with open(logo_path, "rb") as img_file:
-        img_bytes = img_file.read()
-        b64 = base64.b64encode(img_bytes).decode()
-        st.markdown(f"""
-            <div style="position: fixed; top: 20px; left: 20px; z-index: 999;">
-                <img src="data:image/png;base64,{b64}" width="100">
-            </div>
-        """, unsafe_allow_html=True)
-else:
-    st.warning("⚠️ Logo not found. Please upload 'walmart_logo.jpg' to your repo.")
-
-
-# ───────────────────────────────────────────────────────
-# BACKGROUND COLOR
+# ───────────────────────────────────────────────
+# BACKGROUND COLOR OVERRIDE
 st.markdown("""
     <style>
-    .main {
-        background-color: #e3f2fd;
+    html, body, [data-testid="stApp"] {
+        background-color: #e3f2fd !important;
+    }
+
+    .logo-container {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 9999;
+    }
+
+    .stButton > button {
+        background-color: #1565c0;
+        color: white;
+        font-size: 20px;
+        width: 200px;
+        height: 200px;
+        border-radius: 12px;
+        font-weight: bold;
+    }
+
+    .centered {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 75vh;
+        gap: 50px;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# ───────────────────────────────────────────────────────
-# CENTERED BUTTONS USING COLUMNS
+# ───────────────────────────────────────────────
+# OPTIONAL LOGO DISPLAY (TOP-LEFT)
+logo_path = "walmart_logo.jpg"
+if os.path.exists(logo_path):
+    with open(logo_path, "rb") as img_file:
+        img_bytes = img_file.read()
+        b64 = base64.b64encode(img_bytes).decode()
 
-# Add spacing above
-st.write("")
-st.write("")
-st.write("")
-st.write("")
-st.write("")
-st.write("")
+    st.markdown(
+        f"""
+        <div class="logo-container">
+            <img src="data:image/png;base64,{b64}" width="100">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
-# Create three columns and center everything in the middle one
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    st.markdown("<h1 style='text-align: center;'>📊 Walmart Forecast Dashboard</h1>", unsafe_allow_html=True)
-    st.write("##")
-    if st.button("🌤️  Weather Forecast", use_container_width=True):
+# ───────────────────────────────────────────────
+# DASHBOARD TITLE
+st.markdown("<h1 style='text-align: center;'>📊 Walmart Forecast Dashboard</h1>", unsafe_allow_html=True)
+
+# ───────────────────────────────────────────────
+# TWO SQUARE BUTTONS CENTERED HORIZONTALLY
+st.markdown("<div class='centered'>", unsafe_allow_html=True)
+
+col1, col2 = st.columns([1, 1])
+with col1:
+    if st.button("🌤️ Weather Forecast"):
         st.switch_page("pages/weather_ui.py")
-    st.write("")
-    if st.button("🎉  Festival Forecast", use_container_width=True):
+
+with col2:
+    if st.button("🎉 Festival Forecast"):
         st.switch_page("pages/festival_ui.py")
+
+st.markdown("</div>", unsafe_allow_html=True)
