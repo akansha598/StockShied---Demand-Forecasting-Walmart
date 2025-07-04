@@ -615,9 +615,6 @@ st.markdown("""
         transition: all 0.3s ease;
     }
 
-    .stButton > button:hover {
-        background-color: #0d47a1;
-        transform: scale(1.05);
     }
     </style>
 """, unsafe_allow_html=True)
