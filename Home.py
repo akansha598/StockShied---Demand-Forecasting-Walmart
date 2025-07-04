@@ -65,8 +65,78 @@
 
 # st.markdown("</div>", unsafe_allow_html=True)
 
+# import streamlit as st
+# from streamlit_extras.switch_page_button import switch_page
+# import base64
+
+# # ─────────────────────────────────────────────────────────────────────────────
+# # PAGE CONFIG
+# st.set_page_config(
+#     page_title="Walmart Forecast Dashboard",
+#     layout="centered",
+#     initial_sidebar_state="collapsed"
+# )
+
+# # ─────────────────────────────────────────────────────────────────────────────
+# # STYLE: BACKGROUND + CENTERING
+# st.markdown("""
+#     <style>
+#     body {
+#         background-color: #e3f2fd;
+#     }
+#     .main {
+#         background-color: #e3f2fd;
+#     }
+#     .logo {
+#         position: fixed;
+#         top: 10px;
+#         left: 10px;
+#         width: 100px;
+#     }
+#     .button-container {
+#         display: flex;
+#         flex-direction: column;
+#         align-items: center;
+#         justify-content: center;
+#         height: 80vh;
+#     }
+#     .stButton>button {
+#         background-color: #1565c0;
+#         color: white;
+#         font-size: 20px;
+#         padding: 20px 40px;
+#         margin: 20px;
+#         border-radius: 12px;
+#     }
+#     </style>
+# """, unsafe_allow_html=True)
+
+# # ─────────────────────────────────────────────────────────────────────────────
+# # LOGO DISPLAY (TOP-LEFT)
+# logo_path = "walmart_logo.jpg"
+# with open(logo_path, "rb") as img_file:
+#     img_bytes = img_file.read()
+#     b64 = base64.b64encode(img_bytes).decode()
+#     st.markdown(
+#         f"<img class='logo' src='data:image/png;base64,{b64}'>",
+#         unsafe_allow_html=True
+#     )
+
+# # ─────────────────────────────────────────────────────────────────────────────
+# # CENTERED BUTTONS
+# st.markdown("<div class='button-container'>", unsafe_allow_html=True)
+
+# if st.button("🌤️ Weather Forecast"):
+#     switch_page("pages/weather_ui.py")
+
+# if st.button("🎉 Festival Forecast"):
+#     switch_page("pages/festival_ui.py")
+
+# st.markdown("</div>", unsafe_allow_html=True)
+
+
+
 import streamlit as st
-from streamlit_extras.switch_page_button import switch_page
 import base64
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -81,10 +151,7 @@ st.set_page_config(
 # STYLE: BACKGROUND + CENTERING
 st.markdown("""
     <style>
-    body {
-        background-color: #e3f2fd;
-    }
-    .main {
+    .stApp {
         background-color: #e3f2fd;
     }
     .logo {
@@ -92,6 +159,7 @@ st.markdown("""
         top: 10px;
         left: 10px;
         width: 100px;
+        z-index: 9999;
     }
     .button-container {
         display: flex;
@@ -107,13 +175,14 @@ st.markdown("""
         padding: 20px 40px;
         margin: 20px;
         border-radius: 12px;
+        width: 300px;
     }
     </style>
 """, unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # LOGO DISPLAY (TOP-LEFT)
-logo_path = "walmart_logo.jpg"
+logo_path = "walmart_logo.jpg"  # Make sure this is placed in root directory
 with open(logo_path, "rb") as img_file:
     img_bytes = img_file.read()
     b64 = base64.b64encode(img_bytes).decode()
@@ -123,13 +192,10 @@ with open(logo_path, "rb") as img_file:
     )
 
 # ─────────────────────────────────────────────────────────────────────────────
-# CENTERED BUTTONS
+# BUTTON LINKS (official navigation method)
 st.markdown("<div class='button-container'>", unsafe_allow_html=True)
 
-if st.button("🌤️ Weather Forecast"):
-    switch_page("pages/weather_ui.py")
-
-if st.button("🎉 Festival Forecast"):
-    switch_page("pages/festival_ui.py")
+st.page_link("pages/weather_ui.py", label="🌤️ Weather Forecast", icon="🌦️")
+st.page_link("pages/festival_ui.py", label="🎉 Festival Forecast", icon="🎊")
 
 st.markdown("</div>", unsafe_allow_html=True)
