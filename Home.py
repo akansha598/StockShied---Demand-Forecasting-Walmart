@@ -606,18 +606,27 @@ st.markdown("""
     .stButton > button {
         width: 200px;
         height: 200px;
-        background-color: #1565c0;
-        color: white;
+        background-color: #1565c0 !important;
+        color: white !important;
         font-size: 18px;
         border-radius: 20px;
         font-weight: bold;
         box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
         transition: all 0.3s ease;
+        border: none;
     }
 
+    .stButton > button:hover,
+    .stButton > button:focus,
+    .stButton > button:active {
+        background-color: #0d47a1 !important;
+        color: white !important;
+        outline: none !important;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 # ───────────────────────────────────────────────
 # LOGO + TITLE CENTERED TOGETHER
@@ -630,7 +639,7 @@ if os.path.exists(logo_path):
     st.markdown(
         f"""
         <div class="logo-title-container">
-            <img src="data:image/png;base64,{b64}" width="100">
+            <img src="data:image/png;base64,{b64}" width="200">
             <div class="dashboard-title">📊 Walmart Forecast Dashboard</div>
         </div>
         """,
