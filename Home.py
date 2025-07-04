@@ -271,39 +271,66 @@ st.set_page_config(
 
 # ───────────────────────────────────────────────
 # BACKGROUND COLOR OVERRIDE
+# st.markdown("""
+#     <style>
+#     html, body, [data-testid="stApp"] {
+#         background-color: #e3f2fd !important;
+#     }
+
+#     .logo-container {
+#         position: fixed;
+#         top: 20px;
+#         left: 20px;
+#         z-index: 9999;
+#     }
+
+#     .stButton > button {
+#         background-color: #1565c0;
+#         color: white;
+#         font-size: 20px;
+#         width: 200px;
+#         height: 200px;
+#         border-radius: 12px;
+#         font-weight: bold;
+#     }
+
+#     .centered {
+#         display: flex;
+#         justify-content: center;
+#         align-items: center;
+#         height: 75vh;
+#         gap: 50px;
+#     }
+#     </style>
+# """, unsafe_allow_html=True)
+
+
 st.markdown("""
     <style>
-    html, body, [data-testid="stApp"] {
-        background-color: #e3f2fd !important;
+    .button-container {
+        background-color: #e3f2fd;
+        padding: 50px;
+        border-radius: 20px;
+        text-align: center;
     }
-
-    .logo-container {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        z-index: 9999;
-    }
-
-    .stButton > button {
+    .square-button {
         background-color: #1565c0;
         color: white;
         font-size: 20px;
+        padding: 40px 40px;
+        border-radius: 12px;
         width: 200px;
         height: 200px;
-        border-radius: 12px;
-        font-weight: bold;
+        margin: 30px;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
     }
-
-    .centered {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 75vh;
-        gap: 50px;
+    .square-button:hover {
+        background-color: #0d47a1;
     }
     </style>
 """, unsafe_allow_html=True)
-
 # ───────────────────────────────────────────────
 # OPTIONAL LOGO DISPLAY (TOP-LEFT)
 logo_path = "walmart_logo.jpg"
