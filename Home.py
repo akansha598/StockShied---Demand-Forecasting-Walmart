@@ -133,9 +133,10 @@
 #     switch_page("pages/festival_ui.py")
 
 # st.markdown("</div>", unsafe_allow_html=True)
-
 import streamlit as st
 import base64
+from pathlib import Path
+
 
 # ───────────────────────────────────────────────────────
 # PAGE CONFIG
@@ -148,27 +149,29 @@ st.set_page_config(
 # ───────────────────────────────────────────────────────
 # LOAD & SHOW LOGO (top-left)
 
-logo_path = "assets/walmart_logo.png"  # or "walmart_logo.png" if in root
-with open(logo_path, "rb") as img_file:
-    img_bytes = img_file.read()
-    b64 = base64.b64encode(img_bytes).decode()
+logo_path = "walmart_logo.jpg"
+if Path(logo_path).exists():
+    with open(logo_path, "rb") as img_file:
+        img_bytes = img_file.read()
+        b64 = base64.b64encode(img_bytes).decode()
+        st.markdown(f"""
+            <div style="position: fixed; top: 20px; left: 20px; z-index: 999;">
+                <img src="data:image/png;base64,{b64}" width="100">
+            </div>
+        """, unsafe_allow_html=True)
+else:
+    st.warning("⚠️ Logo not found. Please upload 'walmart_logo.jpg' to your repo.")
 
-st.markdown(f"""
-    <div style="position: fixed; top: 100px; left: 100px; z-index: 1000;">
-        <img src="data:image/png;base64,{b64}" width="100">
-    </div>
-""", unsafe_allow_html=True)
 
 # ───────────────────────────────────────────────────────
 # BACKGROUND COLOR
 st.markdown("""
     <style>
-    .stApp {
-        background-color: #e3f2fd;  /* Light blue background */
+    .main {
+        background-color: #e3f2fd;
     }
     </style>
 """, unsafe_allow_html=True)
-
 
 # ───────────────────────────────────────────────────────
 # CENTERED BUTTONS USING COLUMNS
