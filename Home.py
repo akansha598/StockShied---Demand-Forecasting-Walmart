@@ -1034,7 +1034,7 @@ st.markdown("""
         color: white;
         padding: 40px 30px;
         text-align: center;
-        font-size: 21px;
+        font-size: 22px;
         font-weight: 600;
         width: 310px;
         height: 220px;
@@ -1051,7 +1051,7 @@ st.markdown("""
     }
 
     .forecast-subtext {
-        font-size: 15px;
+        font-size: 17px;
         font-weight: normal;
         color: #f0f0f0;
         margin-top: 15px;
@@ -1059,7 +1059,7 @@ st.markdown("""
 
     .footer {
         text-align: center;
-        font-size: 13px;
+        font-size: 17px;
         margin-top: 90px;
         color: #666;
     }
