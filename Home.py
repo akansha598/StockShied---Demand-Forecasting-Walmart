@@ -806,7 +806,7 @@ st.markdown("""
     }
 
     .dashboard-title {
-        font-size: 42px;
+        font-size: 55px;
         font-weight: 700;
         color: #0d47a1;
         margin-top: 15px;
@@ -919,7 +919,7 @@ if os.path.exists(logo_path):
     f"""
     <div class="logo-title-container">
         <div style="
-            height: 80px;
+            height: 50px;
             overflow: hidden;
             display: flex;
             justify-content: center;
