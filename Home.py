@@ -907,7 +907,7 @@ if os.path.exists(logo_path):
     st.markdown(
         f"""
         <div class="logo-title-container">
-            <img src="data:image/png;base64,{b64}" width="120">
+            <img src="data:image/png;base64,{b64}" width="180">
             <div class="dashboard-title">Walmart Forecast Dashboard</div>
             <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
         </div>
