@@ -1569,7 +1569,7 @@ st.markdown("""
 
     .dashboard-title {
         font-size: 40px;
-        font-weight: bold;
+        font-weight: 800;
         color: #0d47a1;
         margin-top: 10px;
     }
@@ -1577,8 +1577,8 @@ st.markdown("""
     .tagline {
         font-size: 20px;
         color: #333;
-        margin-top: 5px;
         font-style: italic;
+        margin-top: 5px;
     }
 
     .footer {
@@ -1589,8 +1589,8 @@ st.markdown("""
     }
 
     .stButton > button {
-        width: 300px;
-        height: 180px;
+        width: 100%;
+        height: 200px;
         background-color: #1565c0 !important;
         color: white !important;
         font-size: 18px;
@@ -1602,17 +1602,21 @@ st.markdown("""
         padding: 20px;
         white-space: pre-line;
         text-align: center;
+        line-height: 1.4;
     }
-    
-
 
     .stButton > button:hover {
         background-color: #0d47a1 !important;
         transform: scale(1.03);
         box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
     }
+
+    /* Optional: reduce vertical padding above and below columns */
+    section.main > div { padding-top: 1rem; padding-bottom: 2rem; }
+
     </style>
 """, unsafe_allow_html=True)
+
 
 # ───────────────────────────────────────────────
 # LOGO + TITLE + TAGLINE CENTERED
