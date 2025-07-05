@@ -873,7 +873,7 @@ st.markdown("""
     justify-content: center;
     align-items: center;
     gap: 60px;
-    margin-top: 50px;
+    margin-top: 80px;
     flex-wrap: wrap;
 }
 
@@ -898,7 +898,7 @@ st.markdown("""
 
 # ───────────────────────────────────────────────
 # LOGO + TITLE
-logo_path = "walmart.png"
+logo_path = "walmart_logo.jpg"
 if os.path.exists(logo_path):
     with open(logo_path, "rb") as img_file:
         img_bytes = img_file.read()
@@ -907,7 +907,7 @@ if os.path.exists(logo_path):
     st.markdown(
         f"""
         <div class="logo-title-container">
-            <img src="data:image/png;base64,{b64}" width="200">
+            <img src="data:image/png;base64,{b64}" width="120">
             <div class="dashboard-title">Walmart Forecast Dashboard</div>
             <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
         </div>
