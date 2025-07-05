@@ -1104,7 +1104,7 @@ st.markdown("""
     <div class="forecast-container">
         <a href="/pages/weather_ui.py" target="_self">
             <div class="forecast-box">
-                🌤️ Weather-Driven Demand
+                🌤️ Weather Impact
                 <div class="forecast-subtext">Forecast demand shifts driven by temperature, rain, or storms</div>
             </div>
         </a>
