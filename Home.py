@@ -867,6 +867,32 @@ st.markdown("""
     a {
         text-decoration: none !important;
     }
+    
+    .forecast-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.forecast-box {
+    background-color: #1565c0;
+    border-radius: 20px;
+    color: white;
+    padding: 40px 25px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    width: 280px;
+    height: 180px;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
     </style>
 """, unsafe_allow_html=True)
 
@@ -897,43 +923,30 @@ else:
     """, unsafe_allow_html=True)
 
 # ───────────────────────────────────────────────
-# FORECAST BUTTON CARDS
-st.markdown("<div class='forecast-container'>", unsafe_allow_html=True)
-
-st.markdown(
-    """
-    <a href="/pages/weather_ui" target="_self">
-        <div class="forecast-box">
-            🌤️ Weather Forecast
-            <div class="forecast-subtext">Predict demand using rain/temp</div>
-        </div>
-    </a>
-    """, unsafe_allow_html=True
-)
-
-st.markdown(
-    """
-    <a href="/pages/festival_ui" target="_self">
-        <div class="forecast-box">
-            🎉 Festival Forecast
-            <div class="forecast-subtext">Plan for festival-based shopping spikes</div>
-        </div>
-    </a>
-    """, unsafe_allow_html=True
-)
-
-st.markdown(
-    """
-    <a href="/pages/events_ui" target="_self">
-        <div class="forecast-box">
-            📅 Local Event Forecast
-            <div class="forecast-subtext">Uplift your stock for upcoming events</div>
-        </div>
-    </a>
-    """, unsafe_allow_html=True
-)
-
-st.markdown("</div>", unsafe_allow_html=True)
+# ───────────────────────────────────────────────
+# FORECAST BUTTON CARDS – IN A ROW (FLEX)
+st.markdown("""
+    <div class="forecast-container">
+        <a href="/pages/weather_ui" target="_self">
+            <div class="forecast-box">
+                🌤️ Weather Forecast
+                <div class="forecast-subtext">Predict demand using rain/temp</div>
+            </div>
+        </a>
+        <a href="/pages/festival_ui" target="_self">
+            <div class="forecast-box">
+                🎉 Festival Forecast
+                <div class="forecast-subtext">Plan for festival-based shopping spikes</div>
+            </div>
+        </a>
+        <a href="/pages/events_ui" target="_self">
+            <div class="forecast-box">
+                📅 Local Event Forecast
+                <div class="forecast-subtext">Uplift your stock for upcoming events</div>
+            </div>
+        </a>
+    </div>
+""", unsafe_allow_html=True)
 
 # ───────────────────────────────────────────────
 # FOOTER
