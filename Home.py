@@ -1006,14 +1006,14 @@ st.markdown("""
     }
 
     .dashboard-title {
-        font-size: 38px;
+        font-size: 40px;
         font-weight: 800;
         color: #0d47a1;
         margin-top: 10px;
     }
 
     .tagline {
-        font-size: 17px;
+        font-size: 20px;
         color: #333;
         font-style: italic;
         margin-top: 5px;
@@ -1091,8 +1091,8 @@ if os.path.exists(logo_path):
             <img src="data:image/png;base64,{b64}"
                  style="height: 120px; object-fit: cover; object-position: center top; margin-top: -10px;">
         </div>
-        <div class="dashboard-title">StockShield: Smarter Inventory, Localized Forecasts.</div>
-        <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
+        <div class="dashboard-title">StockShield: Smart Inventory Meets Local Intelligence.</div>
+        <div class="tagline">From sunshine to street festivals — never miss a demand signal.</div>
     </div>
     """,
     unsafe_allow_html=True
@@ -1104,7 +1104,7 @@ st.markdown("""
     <div class="forecast-container">
         <a href="/pages/weather_ui.py" target="_self">
             <div class="forecast-box">
-                🌤️ Weather Impact Analysis
+                🌤️ Weather-Driven Demand
                 <div class="forecast-subtext">Forecast demand shifts driven by temperature, rain, or storms</div>
             </div>
         </a>
