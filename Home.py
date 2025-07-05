@@ -1571,7 +1571,7 @@ st.markdown("""
         font-size: 48px;
         font-weight: 800;
         color: #0d47a1;
-        margin-top: 18px;
+        margin-top: 20px;
     }
 
     .tagline {
@@ -1594,7 +1594,7 @@ st.markdown("""
         height: 200px;
         background-color: #1565c0 !important;
         color: white !important;
-        font-size: 18px;
+        font-size: 22px;
         font-weight: 600;
         border-radius: 20px;
         border: none;
@@ -1613,7 +1613,7 @@ st.markdown("""
     }
     
     .stButton > button::first-line {
-    font-size: 20px;
+    font-size: 40px;
     font-weight: bold;
 }
 
