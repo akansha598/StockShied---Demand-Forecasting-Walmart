@@ -905,15 +905,18 @@ if os.path.exists(logo_path):
         b64 = base64.b64encode(img_bytes).decode()
 
     st.markdown(
-        f"""
-        <div class="logo-title-container">
-            <img src="data:image/png;base64,{b64}" width="180">
-            <div class="dashboard-title">Walmart Forecast Dashboard</div>
-            <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
+    f"""
+    <div class="logo-title-container">
+        <div style="height: 100px; overflow: hidden; display: flex; justify-content: center;">
+            <img src="data:image/png;base64,{b64}" style="height: 140px; object-fit: cover; object-position: center top;">
         </div>
-        """,
-        unsafe_allow_html=True
+        <div class="dashboard-title">Walmart Forecast Dashboard</div>
+        <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
+    </div>
+    """,
+    unsafe_allow_html=True
     )
+
 else:
     st.markdown("""
         <div class="logo-title-container">
