@@ -1547,7 +1547,7 @@ import os
 # ───────────────────────────────────────────────
 # PAGE CONFIG
 st.set_page_config(
-    page_title="Walmart Forecast Dashboard",
+    page_title="StockShield: Smart Inventory Meets Local Intelligence.",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -1569,7 +1569,7 @@ st.markdown("""
 
     .dashboard-title {
         font-size: 40px;
-        font-weight: 000;
+        font-weight: bold;
         color: #0d47a1;
         margin-top: 10px;
     }
@@ -1589,8 +1589,8 @@ st.markdown("""
     }
 
     .stButton > button {
-        width: 400px;
-        height: 220px;
+        width: 300px;
+        height: 180px;
         background-color: #1565c0 !important;
         color: white !important;
         font-size: 18px;
