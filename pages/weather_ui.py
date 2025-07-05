@@ -5,6 +5,10 @@ import joblib
 import requests
 from datetime import datetime
 
+
+st.set_page_config(page_title="Weather Impact")
+
+
 # Load trained model
 model = joblib.load('weather_model.pkl')
 

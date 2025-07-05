@@ -5,6 +5,12 @@ import requests
 import joblib
 from datetime import datetime
 
+
+st.set_page_config(page_title="Festival Demand Surge")
+
+
+
+
 # Load the trained festival model
 model = joblib.load("festival_model.pkl")
 
