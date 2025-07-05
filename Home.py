@@ -1568,23 +1568,23 @@ st.markdown("""
     }
 
     .dashboard-title {
-        font-size: 45px;
+        font-size: 48px;
         font-weight: 800;
         color: #0d47a1;
-        margin-top: 15px;
+        margin-top: 18px;
     }
 
     .tagline {
         font-size: 22px;
         color: #333;
         font-style: italic;
-        margin-top: 3px;
+        margin-top: 2px;
         margin-bottom: 60px;
     }
 
     .footer {
         text-align: center;
-        font-size: 17px;
+        font-size: 19px;
         margin-top: 140px;
         color: #666;
     }
