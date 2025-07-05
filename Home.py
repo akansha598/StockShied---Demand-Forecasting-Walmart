@@ -1657,15 +1657,15 @@ if os.path.exists(logo_path):
 col1, col2, col3 = st.columns([1, 1, 1], gap="large")
 
 with col1:
-    if st.button("🌤️ Weather Forecast\n\nPredict demand using rain/temp"):
+    if st.button("🌤️ Weather-Driven Demand\n\nForecast demand shifts driven by temperature, rain, or storms"):
         st.switch_page("pages/weather_ui.py")
 
 with col2:
-    if st.button("🎉 Festival Forecast\n\nSee surges due to local festivals"):
+    if st.button("🎉 Festival Demand Surge\n\nAnticipate shopping spikes around key regional celebrations"):
         st.switch_page("pages/festival_ui.py")
 
 with col3:
-    if st.button("📅 Event Forecast\n\nAdjust stock around concerts, expos, etc."):
+    if st.button("🗓️ Nearby Events Forecast\n\nOptimize inventory around concerts, expos, and city-wide events"):
         st.switch_page("pages/events_ui.py")
 
 # ───────────────────────────────────────────────
