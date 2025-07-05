@@ -928,7 +928,7 @@ if os.path.exists(logo_path):
             <img src="data:image/png;base64,{b64}"
                  style="height: 150px; object-fit: cover; object-position: center top; margin-top: -10px;">
         </div>
-        <div class="dashboard-title">Walmart Forecast Dashboard</div>
+        <div class="dashboard-title">StockShield: Smarter Inventory. Real-Time Forecasts.</div>
         <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
     </div>
     """,
@@ -973,6 +973,6 @@ st.markdown("""
 # FOOTER
 st.markdown("""
     <div class="footer">
-        🚀 Built with ❤️ for Walmart Hackathon · Powered by Streamlit
+         Built by Mihika, Akansha & Rahul for Walmart Sparkathon ’25 
     </div>
 """, unsafe_allow_html=True)
