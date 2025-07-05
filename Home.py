@@ -1575,10 +1575,10 @@ st.markdown("""
     }
 
     .tagline {
-        font-size: 20px;
+        font-size: 22px;
         color: #333;
         font-style: italic;
-        margin-top: 4px;
+        margin-top: 3px;
         margin-bottom: 60px;
     }
 
