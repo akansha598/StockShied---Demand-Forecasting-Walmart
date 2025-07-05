@@ -978,11 +978,166 @@
 # """, unsafe_allow_html=True)
 
 
+# import streamlit as st
+# import base64
+# import os
+
+# # ───────────────────────────────────────────────
+# # PAGE CONFIG
+# st.set_page_config(
+#     page_title="StockShield Forecast Dashboard",
+#     layout="wide",
+#     initial_sidebar_state="collapsed"
+# )
+
+# # ───────────────────────────────────────────────
+# # STYLING
+# st.markdown("""
+#     <style>
+#     html, body, [data-testid="stApp"] {
+#         background-color: #e3f2fd;
+#         font-family: 'Segoe UI', sans-serif;
+#     }
+
+#     .logo-title-container {
+#         text-align: center;
+#         margin-top: 20px;
+#         margin-bottom: 40px;
+#     }
+
+#     .dashboard-title {
+#         font-size: 40px;
+#         font-weight: 800;
+#         color: #0d47a1;
+#         margin-top: 10px;
+#     }
+
+#     .tagline {
+#         font-size: 20px;
+#         color: #333;
+#         font-style: italic;
+#         margin-top: 5px;
+#     }
+
+#     .forecast-container {
+#         display: flex;
+#         justify-content: center;
+#         align-items: flex-start;
+#         gap: 80px;
+#         margin-top: 60px;
+#         flex-wrap: wrap;
+#     }
+
+#     .forecast-box {
+#         background-color: #1565c0;
+#         border-radius: 20px;
+#         color: white;
+#         padding: 40px 30px;
+#         text-align: center;
+#         font-size: 24px;
+#         font-weight: 600;
+#         width: 350px;
+#         height: 220px;
+#         box-shadow: 3px 3px 18px rgba(0,0,0,0.2);
+#         transition: all 0.3s ease;
+#         cursor: pointer;
+#         text-decoration: none;
+#     }
+
+#     .forecast-box:hover {
+#         background-color: #0d47a1;
+#         transform: scale(1.05);
+#         box-shadow: 4px 4px 18px rgba(0,0,0,0.3);
+#     }
+
+#     .forecast-subtext {
+#         font-size: 17px;
+#         font-weight: normal;
+#         color: #f0f0f0;
+#         margin-top: 15px;
+#     }
+
+#     .footer {
+#         text-align: center;
+#         font-size: 17px;
+#         margin-top: 90px;
+#         color: #666;
+#     }
+
+#     a {
+#         text-decoration: none !important;
+#     }
+#     </style>
+# """, unsafe_allow_html=True)
+
+# # ───────────────────────────────────────────────
+# # LOGO + TITLE
+# logo_path = "walmart_logo.jpg"
+# if os.path.exists(logo_path):
+#     with open(logo_path, "rb") as img_file:
+#         img_bytes = img_file.read()
+#         b64 = base64.b64encode(img_bytes).decode()
+
+#     st.markdown(
+#     f"""
+#     <div class="logo-title-container">
+#         <div style="
+#             height: 60px;
+#             overflow: hidden;
+#             display: flex;
+#             justify-content: center;
+#             align-items: center;
+#         ">
+#             <img src="data:image/png;base64,{b64}"
+#                  style="height: 120px; object-fit: cover; object-position: center top; margin-top: -10px;">
+#         </div>
+#         <div class="dashboard-title">StockShield: Smart Inventory Meets Local Intelligence.</div>
+#         <div class="tagline">From sunshine to street festivals — never miss a demand signal.</div>
+#     </div>
+#     """,
+#     unsafe_allow_html=True
+#     )
+
+# # ───────────────────────────────────────────────
+# # FORECAST CARDS
+# st.markdown("""
+#     <div class="forecast-container">
+#         <a href="/pages/weather_ui.py" target="_self">
+#             <div class="forecast-box">
+#                 🌤️ Weather Impact
+#                 <div class="forecast-subtext">Forecast demand shifts driven by temperature, rain, or storms</div>
+#             </div>
+#         </a>
+#         <a href="/pages/festival_ui.py" target="_self">
+#             <div class="forecast-box">
+#                 🎉 Festival Demand Surge
+#                 <div class="forecast-subtext">Anticipate shopping spikes around key regional celebrations</div>
+#             </div>
+#         </a>
+#         <a href="/pages/events_ui.py" target="_self">
+#             <div class="forecast-box">
+#                 🗓️ Nearby Events Forecast
+#                 <div class="forecast-subtext">Optimize inventory around concerts, expos, and city-wide events</div>
+#             </div>
+#         </a>
+#     </div>
+# """, unsafe_allow_html=True)
+
+# # ───────────────────────────────────────────────
+# # FOOTER
+# st.markdown("""
+#     <div class="footer">
+#         Built by Mihika, Akansha & Rahul for Walmart Sparkathon '25
+#     </div>
+# """, unsafe_allow_html=True)
+
+
 import streamlit as st
 import base64
 import os
+from streamlit_extras.switch_page_button import switch_page
 
-# ───────────────────────────────────────────────
+# ────────────────────────────────────────────────────────────
 # PAGE CONFIG
 st.set_page_config(
     page_title="StockShield Forecast Dashboard",
@@ -990,7 +1145,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# ───────────────────────────────────────────────
+# ────────────────────────────────────────────────────────────
 # STYLING
 st.markdown("""
     <style>
@@ -1019,42 +1174,26 @@ st.markdown("""
         margin-top: 5px;
     }
 
-    .forecast-container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 80px;
-        margin-top: 60px;
-        flex-wrap: wrap;
-    }
-
-    .forecast-box {
-        background-color: #1565c0;
-        border-radius: 20px;
-        color: white;
-        padding: 40px 30px;
-        text-align: center;
-        font-size: 24px;
-        font-weight: 600;
+    .stButton > button {
         width: 350px;
         height: 220px;
+        background-color: #1565c0;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 20px;
         box-shadow: 3px 3px 18px rgba(0,0,0,0.2);
         transition: all 0.3s ease;
-        cursor: pointer;
-        text-decoration: none;
+        padding: 15px 20px;
+        white-space: pre-line;
+        text-align: center;
+        line-height: 1.4;
     }
 
-    .forecast-box:hover {
+    .stButton > button:hover {
         background-color: #0d47a1;
         transform: scale(1.05);
-        box-shadow: 4px 4px 18px rgba(0,0,0,0.3);
-    }
-
-    .forecast-subtext {
-        font-size: 17px;
-        font-weight: normal;
-        color: #f0f0f0;
-        margin-top: 15px;
+        box-shadow: 4px 4px 20px rgba(0,0,0,0.3);
     }
 
     .footer {
@@ -1063,14 +1202,10 @@ st.markdown("""
         margin-top: 90px;
         color: #666;
     }
-
-    a {
-        text-decoration: none !important;
-    }
     </style>
 """, unsafe_allow_html=True)
 
-# ───────────────────────────────────────────────
+# ────────────────────────────────────────────────────────────
 # LOGO + TITLE
 logo_path = "walmart_logo.jpg"
 if os.path.exists(logo_path):
@@ -1098,32 +1233,23 @@ if os.path.exists(logo_path):
     unsafe_allow_html=True
     )
 
-# ───────────────────────────────────────────────
+# ────────────────────────────────────────────────────────────
 # FORECAST CARDS
-st.markdown("""
-    <div class="forecast-container">
-        <a href="/pages/weather_ui.py" target="_self">
-            <div class="forecast-box">
-                🌤️ Weather Impact
-                <div class="forecast-subtext">Forecast demand shifts driven by temperature, rain, or storms</div>
-            </div>
-        </a>
-        <a href="/pages/festival_ui.py" target="_self">
-            <div class="forecast-box">
-                🎉 Festival Demand Surge
-                <div class="forecast-subtext">Anticipate shopping spikes around key regional celebrations</div>
-            </div>
-        </a>
-        <a href="/pages/events_ui.py" target="_self">
-            <div class="forecast-box">
-                🗓️ Nearby Events Forecast
-                <div class="forecast-subtext">Optimize inventory around concerts, expos, and city-wide events</div>
-            </div>
-        </a>
-    </div>
-""", unsafe_allow_html=True)
+col1, col2, col3 = st.columns([1, 1, 1])
 
-# ───────────────────────────────────────────────
+with col1:
+    if st.button("\U0001F324\ufe0f\nWeather Impact\n\nForecast demand shifts driven by temperature, rain, or storms"):
+        switch_page("pages/weather_ui.py")
+
+with col2:
+    if st.button("\U0001F389\nFestival Demand Surge\n\nAnticipate shopping spikes around key regional celebrations"):
+        switch_page("pages/festival_ui.py")
+
+with col3:
+    if st.button("\U0001F5D3\ufe0f\nNearby Events Forecast\n\nOptimize inventory around concerts, expos, and city-wide events"):
+        switch_page("pages/events_ui.py")
+
+# ────────────────────────────────────────────────────────────
 # FOOTER
 st.markdown("""
     <div class="footer">
