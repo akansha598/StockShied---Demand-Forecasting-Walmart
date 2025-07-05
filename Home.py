@@ -919,7 +919,7 @@ if os.path.exists(logo_path):
     f"""
     <div class="logo-title-container">
         <div style="
-            height: 50px;
+            height: 70px;
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -938,7 +938,7 @@ if os.path.exists(logo_path):
 else:
     st.markdown("""
         <div class="logo-title-container">
-            <div class="dashboard-title">Walmart Forecast Dashboard</div>
+            <div class="dashboard-title">StockShield: Smarter Inventory. Real-Time Forecasts.</div>
             <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
         </div>
     """, unsafe_allow_html=True)
@@ -950,20 +950,20 @@ st.markdown("""
     <div class="forecast-container">
         <a href="/pages/weather_ui" target="_self">
             <div class="forecast-box">
-                🌤️ Weather Forecast
-                <div class="forecast-subtext">Predict demand using rain/temp</div>
+                🌤️ Weather Impact Analysis
+                <div class="forecast-subtext">Forecast demand shifts driven by temperature, rain, or storms</div>
             </div>
         </a>
         <a href="/pages/festival_ui" target="_self">
             <div class="forecast-box">
-                🎉 Festival Forecast
-                <div class="forecast-subtext">Plan for festival-based shopping spikes</div>
+                🎉 Festival Demand Surge
+                <div class="forecast-subtext">Anticipate shopping spikes around key regional celebrations</div>
             </div>
         </a>
         <a href="/pages/events_ui" target="_self">
             <div class="forecast-box">
-                📅 Local Event Forecast
-                <div class="forecast-subtext">Uplift your stock for upcoming events</div>
+                📅 Nearby Events Forecast
+                <div class="forecast-subtext">Optimize inventory around concerts, expos, and city-wide events</div>
             </div>
         </a>
     </div>
