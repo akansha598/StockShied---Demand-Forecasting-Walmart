@@ -893,6 +893,24 @@ st.markdown("""
     text-decoration: none;
 }
 
+.main-title {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.project-name {
+    font-size: 36px;
+    font-weight: bold;
+    color: #0d47a1;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #555;
+    margin-top: 5px;
+}
+
+
     </style>
 """, unsafe_allow_html=True)
 
@@ -938,7 +956,11 @@ if os.path.exists(logo_path):
 else:
     st.markdown("""
         <div class="logo-title-container">
-            <div class="dashboard-title">StockShield: Smarter Inventory. Real-Time Forecasts.</div>
+            <div class="main-title">
+    <div class="project-name">StockShield</div>
+    <div class="subtitle">Smarter Inventory. Real-Time Forecasts.</div>
+</div>
+
             <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
         </div>
     """, unsafe_allow_html=True)
