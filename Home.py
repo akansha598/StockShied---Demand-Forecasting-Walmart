@@ -1594,8 +1594,8 @@ st.markdown("""
         height: 200px;
         background-color: #1565c0 !important;
         color: white !important;
-        font-size: 30px;
-        font-weight: 600;
+        font-size: 35px;
+        font-weight: 800;
         border-radius: 20px;
         border: none;
         box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
