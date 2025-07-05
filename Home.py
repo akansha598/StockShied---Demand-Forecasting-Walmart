@@ -898,7 +898,7 @@ st.markdown("""
 
 # ───────────────────────────────────────────────
 # LOGO + TITLE
-logo_path = "walmart_logo.jpg"
+logo_path = "walmart.png"
 if os.path.exists(logo_path):
     with open(logo_path, "rb") as img_file:
         img_bytes = img_file.read()
