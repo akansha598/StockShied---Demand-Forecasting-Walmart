@@ -778,6 +778,206 @@
 #     )
 
 
+# import streamlit as st
+# import base64
+# import os
+
+# # ───────────────────────────────────────────────
+# # PAGE CONFIG
+# st.set_page_config(
+#     page_title="Walmart Forecast Dashboard",
+#     layout="wide",
+#     initial_sidebar_state="collapsed"
+# )
+
+# # ───────────────────────────────────────────────
+# # STYLING
+# st.markdown("""
+#     <style>
+#     html, body, [data-testid="stApp"] {
+#         background-color: #e3f2fd;
+#         font-family: 'Segoe UI', sans-serif;
+#     }
+
+#     .logo-title-container {
+#         text-align: center;
+#         margin-top: 30px;
+#         margin-bottom: 30px;
+#     }
+
+#     .dashboard-title {
+#         font-size: 45px;
+#         font-weight: 700;
+#         color: #0d47a1;
+#         margin-top: 15px;
+#     }
+
+#     .tagline {
+#         font-size: 18px;
+#         color: #333;
+#         margin-top: 5px;
+#         font-style: italic;
+#     }
+
+#     .forecast-container {
+#         display: flex;
+#         justify-content: center;
+#         align-items: center;
+#         gap: 60px;
+#         margin-top: 50px;
+#         flex-wrap: wrap;
+#     }
+
+#     .forecast-box {
+#         background-color: #1565c0;
+#         border-radius: 20px;
+#         color: white;
+#         padding: 40px 25px;
+#         text-align: center;
+#         font-size: 20px;
+#         font-weight: 600;
+#         width: 280px;
+#         height: 180px;
+#         box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+#         transition: all 0.3s ease;
+#         cursor: pointer;
+#         text-decoration: none;
+#     }
+
+#     .forecast-box:hover {
+#         background-color: #0d47a1;
+#         transform: scale(1.05);
+#         box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
+#     }
+
+#     .forecast-subtext {
+#         font-size: 14px;
+#         font-weight: normal;
+#         color: #e0e0e0;
+#         margin-top: 12px;
+#     }
+
+#     .footer {
+#         text-align: center;
+#         font-size: 13px;
+#         margin-top: 80px;
+#         color: #777;
+#     }
+
+#     a {
+#         text-decoration: none !important;
+#     }
+    
+#     .forecast-container {
+#     display: flex;
+#     justify-content: center;
+#     align-items: center;
+#     gap: 60px;
+#     margin-top: 80px;
+#     flex-wrap: wrap;
+# }
+
+# .forecast-box {
+#     background-color: #1565c0;
+#     border-radius: 20px;
+#     color: white;
+#     padding: 40px 25px;
+#     text-align: center;
+#     font-size: 20px;
+#     font-weight: 600;
+#     width: 280px;
+#     height: 180px;
+#     box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+#     transition: all 0.3s ease;
+#     cursor: pointer;
+#     text-decoration: none;
+# }
+
+#     </style>
+# """, unsafe_allow_html=True)
+
+# # ───────────────────────────────────────────────
+# # LOGO + TITLE
+# logo_path = "walmart_logo.jpg"
+# if os.path.exists(logo_path):
+#     with open(logo_path, "rb") as img_file:
+#         img_bytes = img_file.read()
+#         b64 = base64.b64encode(img_bytes).decode()
+
+#     # st.markdown(
+#     #     f"""
+#     #     <div class="logo-title-container">
+#     #         <img src="data:image/png;base64,{b64}" width="180">
+#     #         <div class="dashboard-title">Walmart Forecast Dashboard</div>
+#     #         <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
+#     #     </div>
+#     #     """,
+#     #     unsafe_allow_html=True
+#     # )
+    
+#     st.markdown(
+#     f"""
+#     <div class="logo-title-container">
+#         <div style="
+#             height: 70px;
+#             overflow: hidden;
+#             display: flex;
+#             justify-content: center;
+#             align-items: center;
+#         ">
+#             <img src="data:image/png;base64,{b64}"
+#                  style="height: 150px; object-fit: cover; object-position: center top; margin-top: -10px;">
+#         </div>
+#         <div class="dashboard-title">StockShield: Smarter Inventory. Real-Time Forecasts.</div>
+#         <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
+#     </div>
+#     """,
+#     unsafe_allow_html=True
+#     )
+
+# else:
+#     st.markdown("""
+#         <div class="logo-title-container">
+#             <div class="dashboard-title">StockShield: Smarter Inventory. Real-Time Forecasts.</div>
+#             <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
+#         </div>
+#     """, unsafe_allow_html=True)
+
+# # ───────────────────────────────────────────────
+# # ───────────────────────────────────────────────
+# # FORECAST BUTTON CARDS – IN A ROW (FLEX)
+# st.markdown("""
+#     <div class="forecast-container">
+#         <a href="/pages/weather_ui.py" target="_self">
+#             <div class="forecast-box">
+#                 🌤️ Weather Impact Analysis
+#                 <div class="forecast-subtext">Forecast demand shifts driven by temperature, rain, or storms</div>
+#             </div>
+#         </a>
+#         <a href="/pages/festival_ui.py" target="_self">
+#             <div class="forecast-box">
+#                 🎉 Festival Demand Surge
+#                 <div class="forecast-subtext">Anticipate shopping spikes around key regional celebrations</div>
+#             </div>
+#         </a>
+#         <a href="/pages/events_ui.py" target="_self">
+#             <div class="forecast-box">
+#                 📅 Nearby Events Forecast
+#                 <div class="forecast-subtext">Optimize inventory around concerts, expos, and city-wide events</div>
+#             </div>
+#         </a>
+#     </div>
+# """, unsafe_allow_html=True)
+
+# # ───────────────────────────────────────────────
+# # FOOTER
+# st.markdown("""
+#     <div class="footer">
+#          Built by Mihika, Akansha & Rahul for Walmart Sparkathon '25 
+#     </div>
+# """, unsafe_allow_html=True)
+
+
 import streamlit as st
 import base64
 import os
@@ -785,7 +985,7 @@ import os
 # ───────────────────────────────────────────────
 # PAGE CONFIG
 st.set_page_config(
-    page_title="Walmart Forecast Dashboard",
+    page_title="StockShield Forecast Dashboard",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -801,30 +1001,30 @@ st.markdown("""
 
     .logo-title-container {
         text-align: center;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        margin-top: 20px;
+        margin-bottom: 40px;
     }
 
     .dashboard-title {
-        font-size: 55px;
-        font-weight: 700;
+        font-size: 38px;
+        font-weight: 800;
         color: #0d47a1;
-        margin-top: 15px;
+        margin-top: 10px;
     }
 
     .tagline {
-        font-size: 18px;
+        font-size: 17px;
         color: #333;
-        margin-top: 5px;
         font-style: italic;
+        margin-top: 5px;
     }
 
     .forecast-container {
         display: flex;
         justify-content: center;
-        align-items: center;
-        gap: 60px;
-        margin-top: 50px;
+        align-items: flex-start;
+        gap: 80px;
+        margin-top: 60px;
         flex-wrap: wrap;
     }
 
@@ -832,13 +1032,13 @@ st.markdown("""
         background-color: #1565c0;
         border-radius: 20px;
         color: white;
-        padding: 40px 25px;
+        padding: 40px 30px;
         text-align: center;
-        font-size: 20px;
+        font-size: 21px;
         font-weight: 600;
-        width: 280px;
-        height: 180px;
-        box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+        width: 310px;
+        height: 220px;
+        box-shadow: 3px 3px 18px rgba(0,0,0,0.2);
         transition: all 0.3s ease;
         cursor: pointer;
         text-decoration: none;
@@ -847,52 +1047,26 @@ st.markdown("""
     .forecast-box:hover {
         background-color: #0d47a1;
         transform: scale(1.05);
-        box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
+        box-shadow: 4px 4px 18px rgba(0,0,0,0.3);
     }
 
     .forecast-subtext {
-        font-size: 14px;
+        font-size: 15px;
         font-weight: normal;
-        color: #e0e0e0;
-        margin-top: 12px;
+        color: #f0f0f0;
+        margin-top: 15px;
     }
 
     .footer {
         text-align: center;
         font-size: 13px;
-        margin-top: 80px;
-        color: #777;
+        margin-top: 90px;
+        color: #666;
     }
 
     a {
         text-decoration: none !important;
     }
-    
-    .forecast-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 60px;
-    margin-top: 80px;
-    flex-wrap: wrap;
-}
-
-.forecast-box {
-    background-color: #1565c0;
-    border-radius: 20px;
-    color: white;
-    padding: 40px 25px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-    width: 280px;
-    height: 180px;
-    box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
-}
-
     </style>
 """, unsafe_allow_html=True)
 
@@ -904,65 +1078,45 @@ if os.path.exists(logo_path):
         img_bytes = img_file.read()
         b64 = base64.b64encode(img_bytes).decode()
 
-    # st.markdown(
-    #     f"""
-    #     <div class="logo-title-container">
-    #         <img src="data:image/png;base64,{b64}" width="180">
-    #         <div class="dashboard-title">Walmart Forecast Dashboard</div>
-    #         <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
-    #     </div>
-    #     """,
-    #     unsafe_allow_html=True
-    # )
-    
     st.markdown(
     f"""
     <div class="logo-title-container">
         <div style="
-            height: 70px;
+            height: 60px;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
         ">
             <img src="data:image/png;base64,{b64}"
-                 style="height: 150px; object-fit: cover; object-position: center top; margin-top: -10px;">
+                 style="height: 120px; object-fit: cover; object-position: center top; margin-top: -10px;">
         </div>
-        <div class="dashboard-title">StockShield: Smarter Inventory. Real-Time Forecasts.</div>
+        <div class="dashboard-title">StockShield: Smarter Inventory, Localized Forecasts.</div>
         <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
     </div>
     """,
     unsafe_allow_html=True
     )
 
-else:
-    st.markdown("""
-        <div class="logo-title-container">
-            <div class="dashboard-title">StockShield: Smarter Inventory. Real-Time Forecasts.</div>
-            <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
-        </div>
-    """, unsafe_allow_html=True)
-
 # ───────────────────────────────────────────────
-# ───────────────────────────────────────────────
-# FORECAST BUTTON CARDS – IN A ROW (FLEX)
+# FORECAST CARDS
 st.markdown("""
     <div class="forecast-container">
-        <a href="/pages/weather_ui" target="_self">
+        <a href="/pages/weather_ui.py" target="_self">
             <div class="forecast-box">
                 🌤️ Weather Impact Analysis
                 <div class="forecast-subtext">Forecast demand shifts driven by temperature, rain, or storms</div>
             </div>
         </a>
-        <a href="/pages/festival_ui" target="_self">
+        <a href="/pages/festival_ui.py" target="_self">
             <div class="forecast-box">
                 🎉 Festival Demand Surge
                 <div class="forecast-subtext">Anticipate shopping spikes around key regional celebrations</div>
             </div>
         </a>
-        <a href="/pages/events_ui" target="_self">
+        <a href="/pages/events_ui.py" target="_self">
             <div class="forecast-box">
-                📅 Nearby Events Forecast
+                🗓️ Nearby Events Forecast
                 <div class="forecast-subtext">Optimize inventory around concerts, expos, and city-wide events</div>
             </div>
         </a>
@@ -973,6 +1127,6 @@ st.markdown("""
 # FOOTER
 st.markdown("""
     <div class="footer">
-         Built by Mihika, Akansha & Rahul for Walmart Sparkathon '25 
+        Built by Mihika, Akansha & Rahul for Walmart Sparkathon '25
     </div>
 """, unsafe_allow_html=True)
