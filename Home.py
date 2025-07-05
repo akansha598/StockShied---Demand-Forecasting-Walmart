@@ -1034,9 +1034,9 @@ st.markdown("""
         color: white;
         padding: 40px 30px;
         text-align: center;
-        font-size: 22px;
+        font-size: 24px;
         font-weight: 600;
-        width: 310px;
+        width: 350px;
         height: 220px;
         box-shadow: 3px 3px 18px rgba(0,0,0,0.2);
         transition: all 0.3s ease;
