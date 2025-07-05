@@ -1611,6 +1611,11 @@ st.markdown("""
         transform: scale(1.03);
         box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
     }
+    
+    .stButton > button::first-line {
+    font-size: 20px;
+    font-weight: bold;
+}
 
     /* Optional: reduce vertical padding above and below columns */
     section.main > div { padding-top: 1rem; padding-bottom: 2rem; }
@@ -1651,21 +1656,9 @@ if os.path.exists(logo_path):
 # 3 BUTTONS (Interactive navigation cards)
 col1, col2, col3 = st.columns([1, 1, 1], gap="large")
 
-# with col1:
-#     if st.button("🌤️ Weather Forecast\n\nPredict demand using rain/temp"):
-#         st.switch_page("pages/weather_ui.py")
-
-
 with col1:
-    st.markdown("""
-        <div class="custom-button">
-            <b style="font-size: 30px;">🌤️ Weather Forecast</b><br>
-            <span style="font-size: 15px;">Predict demand using rain/temp</span>
-        </div>
-    """, unsafe_allow_html=True)
-    if st.button("Go to Weather Forecast", key="weather_btn"):
+    if st.button("🌤️ Weather Forecast\n\nPredict demand using rain/temp"):
         st.switch_page("pages/weather_ui.py")
-        
 
 with col2:
     if st.button("🎉 Festival Forecast\n\nSee surges due to local festivals"):
