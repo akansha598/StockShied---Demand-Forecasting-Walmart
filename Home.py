@@ -1571,7 +1571,7 @@ st.markdown("""
         font-size: 40px;
         font-weight: 800;
         color: #0d47a1;
-        margin-top: 10px;
+        margin-top: 15px;
     }
 
     .tagline {
@@ -1579,12 +1579,13 @@ st.markdown("""
         color: #333;
         font-style: italic;
         margin-top: 5px;
+        margin-bottom: 60px;
     }
 
     .footer {
         text-align: center;
         font-size: 17px;
-        margin-top: 80px;
+        margin-top: 140px;
         color: #666;
     }
 
