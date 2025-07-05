@@ -656,10 +656,134 @@
 #     st.markdown('<div class="forecast-box">🎉 Festival Forecast<br><span class="forecast-subtext">See surges due to local events</span></div>', unsafe_allow_html=True)
 
 
+# import streamlit as st
+# import base64
+# import os
+
+# st.set_page_config(
+#     page_title="Walmart Forecast Dashboard",
+#     layout="wide",
+#     initial_sidebar_state="collapsed"
+# )
+
+# # ───────────────────────────────────────────────
+# # STYLING
+# st.markdown("""
+#     <style>
+#     html, body, [data-testid="stApp"] {
+#         background-color: #e3f2fd;
+#         font-family: 'Segoe UI', sans-serif;
+#     }
+
+#     .logo-title-container {
+#         text-align: center;
+#         margin-top: 30px;
+#         margin-bottom: 20px;
+#     }
+
+#     .dashboard-title {
+#         font-size: 42px;
+#         font-weight: 700;
+#         color: #0d47a1;
+#         margin-top: 15px;
+#     }
+
+#     .tagline {
+#         font-size: 18px;
+#         color: #333;
+#         margin-top: 5px;
+#         font-style: italic;
+#     }
+
+#     .forecast-box {
+#         background-color: #1565c0;
+#         border-radius: 20px;
+#         color: white;
+#         padding: 40px 20px;
+#         text-align: center;
+#         font-size: 18px;
+#         font-weight: 600;
+#         box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+#         transition: all 0.3s ease;
+#         cursor: pointer;
+#     }
+
+#     .forecast-box:hover {
+#         background-color: #0d47a1;
+#         transform: scale(1.03);
+#         box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
+#     }
+
+#     .forecast-subtext {
+#         font-size: 14px;
+#         font-weight: normal;
+#         color: #e0e0e0;
+#         margin-top: 10px;
+#     }
+#     </style>
+# """, unsafe_allow_html=True)
+
+# # ───────────────────────────────────────────────
+# # LOGO + TITLE + TAGLINE
+# logo_path = "walmart_logo.jpg"
+# if os.path.exists(logo_path):
+#     with open(logo_path, "rb") as img_file:
+#         img_bytes = img_file.read()
+#         b64 = base64.b64encode(img_bytes).decode()
+
+#     st.markdown(
+#         f"""
+#         <div class="logo-title-container">
+#             <img src="data:image/png;base64,{b64}" width="200">
+#             <div class="dashboard-title">Walmart Forecast Dashboard</div>
+#             <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
+#         </div>
+#         """,
+#         unsafe_allow_html=True
+#     )
+# else:
+#     st.markdown("""
+#         <div class="logo-title-container">
+#             <div class="dashboard-title">Walmart Forecast Dashboard</div>
+#             <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
+#         </div>
+#     """, unsafe_allow_html=True)
+
+# # ───────────────────────────────────────────────
+# # BLUE CARDS THAT LINK TO PAGES
+# col1, col2 = st.columns([1, 1], gap="large")
+
+# with col1:
+#     st.markdown(
+#         """
+#         <a href="/pages/weather_ui" target="_self">
+#             <div class="forecast-box">
+#                 🌤️ Weather Forecast
+#                 <div class="forecast-subtext">Predict demand using rain/temp</div>
+#             </div>
+#         </a>
+#         """, unsafe_allow_html=True
+#     )
+
+# with col2:
+#     st.markdown(
+#         """
+#         <a href="/pages/festival_ui" target="_self">
+#             <div class="forecast-box">
+#                 🎉 Festival Forecast
+#                 <div class="forecast-subtext">See surges due to local events</div>
+#             </div>
+#         </a>
+#         """, unsafe_allow_html=True
+#     )
+
+
 import streamlit as st
 import base64
 import os
 
+# ───────────────────────────────────────────────
+# PAGE CONFIG
 st.set_page_config(
     page_title="Walmart Forecast Dashboard",
     layout="wide",
@@ -678,7 +802,7 @@ st.markdown("""
     .logo-title-container {
         text-align: center;
         margin-top: 30px;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .dashboard-title {
@@ -695,22 +819,34 @@ st.markdown("""
         font-style: italic;
     }
 
+    .forecast-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+        margin-top: 50px;
+        flex-wrap: wrap;
+    }
+
     .forecast-box {
         background-color: #1565c0;
         border-radius: 20px;
         color: white;
-        padding: 40px 20px;
+        padding: 40px 25px;
         text-align: center;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 600;
+        width: 280px;
+        height: 180px;
         box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
         transition: all 0.3s ease;
         cursor: pointer;
+        text-decoration: none;
     }
 
     .forecast-box:hover {
         background-color: #0d47a1;
-        transform: scale(1.03);
+        transform: scale(1.05);
         box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
     }
 
@@ -718,13 +854,24 @@ st.markdown("""
         font-size: 14px;
         font-weight: normal;
         color: #e0e0e0;
-        margin-top: 10px;
+        margin-top: 12px;
+    }
+
+    .footer {
+        text-align: center;
+        font-size: 13px;
+        margin-top: 80px;
+        color: #777;
+    }
+
+    a {
+        text-decoration: none !important;
     }
     </style>
 """, unsafe_allow_html=True)
 
 # ───────────────────────────────────────────────
-# LOGO + TITLE + TAGLINE
+# LOGO + TITLE
 logo_path = "walmart_logo.jpg"
 if os.path.exists(logo_path):
     with open(logo_path, "rb") as img_file:
@@ -750,29 +897,48 @@ else:
     """, unsafe_allow_html=True)
 
 # ───────────────────────────────────────────────
-# BLUE CARDS THAT LINK TO PAGES
-col1, col2 = st.columns([1, 1], gap="large")
+# FORECAST BUTTON CARDS
+st.markdown("<div class='forecast-container'>", unsafe_allow_html=True)
 
-with col1:
-    st.markdown(
-        """
-        <a href="/pages/weather_ui" target="_self">
-            <div class="forecast-box">
-                🌤️ Weather Forecast
-                <div class="forecast-subtext">Predict demand using rain/temp</div>
-            </div>
-        </a>
-        """, unsafe_allow_html=True
-    )
+st.markdown(
+    """
+    <a href="/pages/weather_ui" target="_self">
+        <div class="forecast-box">
+            🌤️ Weather Forecast
+            <div class="forecast-subtext">Predict demand using rain/temp</div>
+        </div>
+    </a>
+    """, unsafe_allow_html=True
+)
 
-with col2:
-    st.markdown(
-        """
-        <a href="/pages/festival_ui" target="_self">
-            <div class="forecast-box">
-                🎉 Festival Forecast
-                <div class="forecast-subtext">See surges due to local events</div>
-            </div>
-        </a>
-        """, unsafe_allow_html=True
-    )
+st.markdown(
+    """
+    <a href="/pages/festival_ui" target="_self">
+        <div class="forecast-box">
+            🎉 Festival Forecast
+            <div class="forecast-subtext">Plan for festival-based shopping spikes</div>
+        </div>
+    </a>
+    """, unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <a href="/pages/events_ui" target="_self">
+        <div class="forecast-box">
+            📅 Local Event Forecast
+            <div class="forecast-subtext">Uplift your stock for upcoming events</div>
+        </div>
+    </a>
+    """, unsafe_allow_html=True
+)
+
+st.markdown("</div>", unsafe_allow_html=True)
+
+# ───────────────────────────────────────────────
+# FOOTER
+st.markdown("""
+    <div class="footer">
+        🚀 Built with ❤️ for Walmart Hackathon · Powered by Streamlit
+    </div>
+""", unsafe_allow_html=True)
