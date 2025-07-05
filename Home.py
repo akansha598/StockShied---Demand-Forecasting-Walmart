@@ -1563,19 +1563,19 @@ st.markdown("""
 
     .logo-title-container {
         text-align: center;
-        margin-top: 30px;
-        margin-bottom: 20px;
+        margin-top: 20px;
+        margin-bottom: 40px;
     }
 
     .dashboard-title {
-        font-size: 42px;
-        font-weight: 700;
+        font-size: 40px;
+        font-weight: 000;
         color: #0d47a1;
-        margin-top: 15px;
+        margin-top: 10px;
     }
 
     .tagline {
-        font-size: 18px;
+        font-size: 20px;
         color: #333;
         margin-top: 5px;
         font-style: italic;
@@ -1589,7 +1589,7 @@ st.markdown("""
     }
 
     .stButton > button {
-        width: 100%;
+        width: 400px;
         height: 220px;
         background-color: #1565c0 !important;
         color: white !important;
@@ -1603,6 +1603,8 @@ st.markdown("""
         white-space: pre-line;
         text-align: center;
     }
+    
+
 
     .stButton > button:hover {
         background-color: #0d47a1 !important;
@@ -1621,22 +1623,24 @@ if os.path.exists(logo_path):
         b64 = base64.b64encode(img_bytes).decode()
 
     st.markdown(
-        f"""
-        <div class="logo-title-container">
-            <img src="data:image/png;base64,{b64}" width="200">
-            <div class="dashboard-title">Walmart Forecast Dashboard</div>
-            <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
+    f"""
+    <div class="logo-title-container">
+        <div style="
+            height: 60px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        ">
+            <img src="data:image/png;base64,{b64}"
+                 style="height: 120px; object-fit: cover; object-position: center top; margin-top: -10px;">
         </div>
-        """,
-        unsafe_allow_html=True
+        <div class="dashboard-title">StockShield: Smart Inventory Meets Local Intelligence.</div>
+        <div class="tagline">From sunshine to street festivals — never miss a demand signal.</div>
+    </div>
+    """,
+    unsafe_allow_html=True
     )
-else:
-    st.markdown("""
-        <div class="logo-title-container">
-            <div class="dashboard-title">Walmart Forecast Dashboard</div>
-            <div class="tagline">Empowering smarter inventory decisions with hyperlocal insights</div>
-        </div>
-    """, unsafe_allow_html=True)
 
 # ───────────────────────────────────────────────
 # 3 BUTTONS (Interactive navigation cards)
