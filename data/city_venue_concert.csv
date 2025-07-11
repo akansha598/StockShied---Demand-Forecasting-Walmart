@@ -1,0 +1,21 @@
+venue_name,city,latitude,longitude,event_name,date,expected_attendance,event_impact_score
+NESCO Centre,Mumbai,19.0755,72.8656,Comic Con,2024-08-22,45000,9
+D.Y. Patil Stadium,Navi Mumbai,19.0660,73.0268,Music Fest,2023-05-29,50000,8
+Jawaharlal Nehru Stadium,Delhi,28.6139,77.2390,Tech Summit,2024-01-07,55000,6
+Eden Gardens,Kolkata,22.5640,88.3450,Food Carnival,2024-02-09,62000,7
+Gachibowli Stadium,Hyderabad,17.4401,78.3489,Comic Con,2025-04-15,28000,9
+M Chinnaswamy Stadium,Bengaluru,12.9786,77.5994,Art Festival,2023-10-29,38000,6
+Shilpakala Vedika,Hyderabad,17.4154,78.4345,Fitness Fest,2024-12-23,15000,5
+Phoenix Marketcity,Mumbai,19.1076,72.8683,Book Fair,2023-05-26,12000,4
+India Expo Mart,Noida,28.5384,77.3916,Startup Expo,2025-03-10,18000,5
+Jawahar Kala Kendra,Jaipur,26.9124,75.7873,Comic Con,2024-10-09,22000,9
+Manpho Convention Center,Bengaluru,12.9716,77.5946,Dance Night,2024-07-05,25000,7
+La Martiniere Grounds,Lucknow,26.8393,80.9231,Food Carnival,2022-09-29,30000,7
+VGP Convention,Chennai,12.8699,80.2317,Education Fair,2023-03-11,8000,3
+The Mills,Pune,18.5626,73.9167,Art Festival,2023-10-07,14000,6
+Nicco Park Grounds,Kolkata,22.5726,88.4116,Tech Summit,2023-06-24,20000,5
+Rajpath Club,Ahmedabad,23.0396,72.5664,Music Fest,2023-07-02,12000,6
+Island Grounds,Chennai,13.0674,80.2746,Startup Expo,2025-01-25,35000,7
+Birla Auditorium,Jaipur,26.8860,75.8005,Book Fair,2023-07-22,10000,4
+Indira Gandhi Pratishthan,Lucknow,26.8530,80.9850,Comic Con,2024-10-01,32000,9
+White Orchid,Bengaluru,12.9716,77.5946,Fitness Fest,2025-06-24,18000,5

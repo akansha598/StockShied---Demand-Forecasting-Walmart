@@ -1,0 +1,21 @@
+store_name,address,city,state,latitude,longitude,store_capacity_sqft,population_within_5km,avg_monthly_sales_INR
+Walmart Supercenter,LBS Marg Bhandup West,Mumbai,Maharashtra,19.1463,72.9356,50000,812000,11200000
+Walmart Neighborhood Market,Sector 19 Vashi,Navi Mumbai,Maharashtra,19.0760,73.0168,25000,543000,8750000
+Walmart Supercenter,Sector 18, Noida,Uttar Pradesh,28.5702,77.3218,45000,423000,12750000
+Walmart Neighborhood Market,Block E Salt Lake,Kolkata,West Bengal,22.5726,88.3639,30000,687000,9350000
+Walmart Supercenter,Gachibowli,Hyderabad,Telangana,17.4401,78.3489,48000,324000,10500000
+Walmart Neighborhood Market,Whitefield,Bengaluru,Karnataka,12.9698,77.7499,35000,598000,14200000
+Walmart Supercenter,Vadapalani,Chennai,Tamil Nadu,13.0524,80.2145,42000,512000,9850000
+Walmart Neighborhood Market,Kaloor,Kochi,Kerala,9.9982,76.3020,28000,287000,7650000
+Walmart Supercenter,Hitech City,Hyderabad,Telangana,17.4474,78.3765,52000,387000,11800000
+Walmart Neighborhood Market,Powai,Mumbai,Maharashtra,19.1197,72.9056,32000,692000,13400000
+Walmart Supercenter,Rajiv Chowk,Delhi,Delhi,28.6330,77.2198,55000,891000,15200000
+Walmart Neighborhood Market,Sector 62,Noida,Uttar Pradesh,28.6116,77.3624,38000,512000,12100000
+Walmart Supercenter,Alipore,Kolkata,West Bengal,22.5326,88.3307,40000,543000,10200000
+Walmart Neighborhood Market,Jayanagar,Bengaluru,Karnataka,12.9342,77.5938,33000,623000,14800000
+Walmart Supercenter,Anna Nagar,Chennai,Tamil Nadu,13.0900,80.2120,47000,587000,11200000
+Walmart Neighborhood Market,Banjara Hills,Hyderabad,Telangana,17.4250,78.4487,29000,456000,12400000
+Walmart Supercenter,Andheri East,Mumbai,Maharashtra,19.1206,72.8471,51000,712000,14300000
+Walmart Neighborhood Market,Sector 49,Gurugram,Haryana,28.4089,77.0588,36000,498000,11500000
+Walmart Supercenter,Salt Lake,Kolkata,West Bengal,22.5826,88.4339,44000,654000,10800000
+Walmart Neighborhood Market,Marathahalli,Bengaluru,Karnataka,12.9586,77.7015,31000,587000,13900000
