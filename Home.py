@@ -1666,7 +1666,7 @@ with col2:
 
 with col3:
     if st.button("🗓️ Nearby Events Forecast\n\nOptimize inventory around concerts, expos, and city-wide events"):
-        st.switch_page("pages/events_ui.py")
+        st.switch_page("pages/localevents_ui.py")
 
 # ───────────────────────────────────────────────
 # FOOTER
