@@ -5,3 +5,4 @@ requests
 joblib
 xgboost
 streamlit-extras
+scikit-learn
