@@ -290,8 +290,8 @@ with main_col:
                                     valid_events = events_df['event_name'].unique().tolist()
     
                                     if event_name_input not in valid_events:
-                                    st.error(f"❌ Event '{event_name_input}' not in trained events list. Please use one of: {', '.join(valid_events[:5])}...")
-                                    st.stop()
+                                        st.error(f"❌ Event '{event_name_input}' not in trained events list. Please use one of: {', '.join(valid_events[:5])}...")
+                                        st.stop()
     
                                     predicted_sales = model.predict(X_input)[0]
                                 except Exception as e:
