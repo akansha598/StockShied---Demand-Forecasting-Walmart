@@ -564,10 +564,11 @@ walmart_df, events_df = load_data()
 
 @st.cache_resource
 def load_model():
-    model = joblib.load("sales2_model.pkl")
-    if not hasattr(model, 'predict'):
-        raise TypeError(f"Loaded object is not a model pipeline. Got type: {type(model)}")
-    return model
+    model_bundle = joblib.load("sales2_model.pkl")
+    return model_bundle
+
+model_bundle = load_model()
+
 
 model = load_model()
 # ------------------------------------------------------------
@@ -809,21 +810,18 @@ with main_col:
                                 
 
 #                                 predicted_sales = model.predict(X_input)[0]
-                                X_input = pd.DataFrame({
-                                    'population': [float(total_population)],
-                                    'event_name': [str(event_name_input).strip()],
-                                    'event_impact_score': [float(event_impact_score)]
-                                })
+                                # Encode event name
+                                event_label = model_bundle['label_encoder'].transform([event_name_input.strip()])[0]
 
-                                # Ensure correct column order
-                                X_input = X_input[['population', 'event_name', 'event_impact_score']]
+                                # Make sure your input matches the training columns
+                                X_input = np.array([[float(total_population), float(event_label), float(event_impact_score)]])
 
-                                # Optional debug
-                                st.write("✅ Input to model:", X_input)
-                                st.write("✅ Input dtypes:", X_input.dtypes)
+                                # Scale
+                                X_scaled = model_bundle['scaler'].transform(X_input)
 
                                 # Predict
-                                predicted_sales = model.predict(X_input)[0]
+                                predicted_sales = model_bundle['regressor'].predict(X_scaled)[0]
+
 
 
 
