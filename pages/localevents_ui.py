@@ -273,34 +273,55 @@ with main_col:
                                 st.error(f"Event '{event_name_input}' not found in dataset.")
                             else:
                                 event_impact_score = event_match.iloc[0]['event_impact_score']
-                                  # Step 5: Predict
-                                try:
-    # Create input DataFrame with correct structure
-                                    X_input = pd.DataFrame([{
-                                        'population': [total_population],  # As list to ensure shape
-                                        'event_name': [event_name_input],  # As list
-                                        'event_impact_score': [event_impact_score]
-                                    }])
-    
-    # Ensure correct column order (must match training)
-                                    X_input = X_input[['population', 'event_name', 'event_impact_score']]
-    
-    # Debug: Print input structure
-                                    st.write("Debug - Input DataFrame:", X_input)
-    
-                                    predicted_sales = model.predict(X_input)[0]
-                                except Exception as e:
+
+                                # Step 5: Predict - COMPLETE WORKING VERSION
+                            try:
+                                # 1. First validate the event name exists
+                                known_events = events_df['event_name'].str.strip().str.lower().unique().tolist()
+                                input_event = event_name_input.strip().lower()
+                                
+                                if input_event not in known_events:
                                     st.error(f"""
-                                        ❌ Prediction failed because:
-                                        {str(e)}
-    
-                                        Please ensure:
-                                        1. Event name matches exactly with training data
-                                        2. All values are in correct format
-                                        """)
+                                    ❌ Event '{event_name_input}' not found in training data.
+                                    First 5 valid events: {', '.join(events_df['event_name'].unique()[:5])}...
+                                    """)
                                     st.stop()
-#                                 # Step 5: Predict
-#                                # Step 5: Predict
+
+                                # 2. Create input DataFrame with EXACT same structure as training
+                                X_input = pd.DataFrame({
+                                    'population': [float(total_population)],  # Ensure numeric
+                                    'event_name': [event_name_input],  # Original casing
+                                    'event_impact_score': [float(event_impact_score)]  # Ensure numeric
+                                })
+                                
+                                # 3. DEBUG: Show model's expected features
+                                if hasattr(model, 'named_steps'):
+                                    try:
+                                        st.write("Model expects features:", 
+                                                model.named_steps['preprocessor'].get_feature_names_out())
+                                    except:
+                                        st.write("Could not get feature names - model may not be a pipeline")
+
+                                # 4. Make prediction
+                                predicted_sales = model.predict(X_input)[0]
+                                
+                            except Exception as e:
+                                st.error(f"""
+                                ❌ CRITICAL PREDICTION ERROR
+                                Error type: {type(e).__name__}
+                                Message: {str(e)}
+                                
+                                TROUBLESHOOTING:
+                                1. Verify event name matches exactly (case sensitive)
+                                2. Ensure all values are correct types:
+                                - Population: {type(total_population)} (should be number)
+                                - Event Name: {type(event_name_input)} (should be string)
+                                - Impact Score: {type(event_impact_score)} (should be number)
+                                3. Check model input structure matches training data
+                                """)
+                                st.stop()
+                                # Step 5: Predict
+                               # Step 5: Predict
 #                                 X_input = pd.DataFrame([{
 #                                     'population': total_population,
 #                                     'event_name': event_name_input,
