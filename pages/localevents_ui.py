@@ -564,15 +564,15 @@ walmart_df, events_df = load_data()
 
 @st.cache_resource
 def load_model():
-    # Load model and columns
-    model_bundle = joblib.load("sales2_model.pkl")
-    model = model_bundle["pipeline"]
-    expected_columns = model_bundle["expected_columns"]
-    if not hasattr(model, 'predict'):
-        raise TypeError(f"Loaded object is not a model pipeline. Got type: {type(model)}")
-    return model,expected_columns
+    bundle = joblib.load("sales2_model.pkl")
+    pipeline = bundle.get('pipeline')
+    expected_columns = bundle.get('expected_columns')
+    if pipeline is None or expected_columns is None:
+        raise ValueError("❌ Model file missing expected structure: pipeline or expected_columns not found.")
+    return pipeline, expected_columns
 
-model,expected_columns = load_model()
+model, expected_columns = load_model()
+
 # ------------------------------------------------------------
 def get_lat_lon_from_address(address, max_retries=3):
     url = "https://nominatim.openstreetmap.org/search"
