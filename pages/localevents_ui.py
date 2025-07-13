@@ -201,8 +201,7 @@ main_col, alert_col = st.columns([0.7, 0.3], gap="large")
 
 # ------------------------------------------------------------
 # Always show alerts on the right
-with alert_col:
-    show_alerts_in_sidebar_area(alert_col)
+show_alerts_in_sidebar_area(alert_col)
 
 # ------------------------------------------------------------
 # Main area content changes based on selection
