@@ -275,8 +275,9 @@ with main_col:
                                 event_impact_score = event_match.iloc[0]['event_impact_score']
                                 # Ensure DataFrame shape and column names match training
                                 input_data = {
-                                    'population': [total_population],
+                                    
                                     'event_name': [event_name_input],
+                                    'population': [total_population],
                                     'event_impact_score': [event_impact_score]
                                 }
 
