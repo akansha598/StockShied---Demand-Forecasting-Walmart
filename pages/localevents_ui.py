@@ -273,30 +273,55 @@ with main_col:
                                 st.error(f"Event '{event_name_input}' not found in dataset.")
                             else:
                                 event_impact_score = event_match.iloc[0]['event_impact_score']
-
-                                # Step 5: Predict
-                               # Step 5: Predict
-                                X_input = pd.DataFrame([{
-                                    'population': total_population,
-                                    'event_name': event_name_input,
-                                    'event_impact_score': event_impact_score
-                                }])
-
-# Ensure column order matches training data
-                                X_input = X_input[['population', 'event_name', 'event_impact_score']]
-
+                                  # Step 5: Predict
                                 try:
-    # Get list of known event names from training data
-                                    valid_events = events_df['event_name'].unique().tolist()
+    # Create input DataFrame with correct structure
+                                    X_input = pd.DataFrame([{
+                                        'population': [total_population],  # As list to ensure shape
+                                        'event_name': [event_name_input],  # As list
+                                        'event_impact_score': [event_impact_score]
+                                    }])
     
-                                    if event_name_input not in valid_events:
-                                        st.error(f"❌ Event '{event_name_input}' not in trained events list. Please use one of: {', '.join(valid_events[:5])}...")
-                                        st.stop()
+    # Ensure correct column order (must match training)
+                                    X_input = X_input[['population', 'event_name', 'event_impact_score']]
+    
+    # Debug: Print input structure
+                                    st.write("Debug - Input DataFrame:", X_input)
     
                                     predicted_sales = model.predict(X_input)[0]
                                 except Exception as e:
-                                    st.error(f"❌ Prediction failed. Details: {str(e)}")
+                                    st.error(f"""
+                                        ❌ Prediction failed because:
+                                        {str(e)}
+    
+                                        Please ensure:
+                                        1. Event name matches exactly with training data
+                                        2. All values are in correct format
+                                        """)
                                     st.stop()
+#                                 # Step 5: Predict
+#                                # Step 5: Predict
+#                                 X_input = pd.DataFrame([{
+#                                     'population': total_population,
+#                                     'event_name': event_name_input,
+#                                     'event_impact_score': event_impact_score
+#                                 }])
+
+# # Ensure column order matches training data
+#                                 X_input = X_input[['population', 'event_name', 'event_impact_score']]
+
+#                                 try:
+#     # Get list of known event names from training data
+#                                     valid_events = events_df['event_name'].unique().tolist()
+    
+#                                     if event_name_input not in valid_events:
+#                                         st.error(f"❌ Event '{event_name_input}' not in trained events list. Please use one of: {', '.join(valid_events[:5])}...")
+#                                         st.stop()
+    
+#                                     predicted_sales = model.predict(X_input)[0]
+#                                 except Exception as e:
+#                                     st.error(f"❌ Prediction failed. Details: {str(e)}")
+#                                     st.stop()
 
 
                                 # Step 6: Compare with past sales
