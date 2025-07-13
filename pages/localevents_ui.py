@@ -532,7 +532,7 @@ st.set_page_config(page_title="Walmart Event Sales Predictor", layout="wide")
 # Load data once
 @st.cache_data
 def load_data():
-    THIS_DIR = os.path.dirname(_file_)
+    THIS_DIR = os.path.dirname(__file__)
     walmart_csv = os.path.join(THIS_DIR, "walmart_info.csv")
     events_csv = os.path.join(THIS_DIR, "city_venue_concert.csv")
     
