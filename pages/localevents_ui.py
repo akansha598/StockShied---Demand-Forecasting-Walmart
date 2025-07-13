@@ -22,6 +22,8 @@ def load_data():
     THIS_DIR = os.path.dirname(__file__)
     walmart_csv = os.path.join(THIS_DIR, "walmart_info.csv")
     events_csv = os.path.join(THIS_DIR, "city_venue_concert.csv")
+    walmart_df = pd.read_csv(walmart_csv)
+    events_df = pd.read_csv(events_csv)
     for df in [walmart_df, events_df]:
         df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')
     return walmart_df, events_df
