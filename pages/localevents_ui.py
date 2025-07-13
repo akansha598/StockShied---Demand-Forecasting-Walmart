@@ -282,10 +282,7 @@ with main_col:
                                 }])
                                 
                                 # Enforce correct dtypes
-                                X_input['population'] = pd.to_numeric(X_input['population'], errors='raise')
-                                X_input['event_impact_score'] = pd.to_numeric(X_input['event_impact_score'], errors='raise')
-
-                                st.write("DEBUG INPUT:", X_input)
+                                X_input = X_input[['population', 'event_name', 'event_impact_score']]
 
                                 predicted_sales = model.predict(X_input)[0]
 
