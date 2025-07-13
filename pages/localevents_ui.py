@@ -71,6 +71,9 @@ def haversine(lat1, lon1, lat2, lon2):
     return R * 2 * atan2(sqrt(a), sqrt(1 - a))
 
 def show_alerts_in_sidebar_area(col):
+    if not hasattr(col, "markdown"):
+        st.error("show_alerts_in_sidebar_area: invalid Streamlit container passed!")
+        return
     col.subheader("📋 Overstock Alerts")
 
     if os.path.exists("alerts.csv"):
