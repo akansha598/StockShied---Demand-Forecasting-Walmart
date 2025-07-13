@@ -215,7 +215,7 @@ pipeline = Pipeline([
 pipeline.fit(X, y)
 
 # Save the pipeline
-joblib.dump(pipeline, 'sales_model.pkl')
+joblib.dump(pipeline, 'sales2_model.pkl')
 
 print("✅ Model trained and saved as sales_model.pkl")
 print("✅ Expected input format: population, event_name, event_impact_score")
