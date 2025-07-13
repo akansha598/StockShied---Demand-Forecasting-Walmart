@@ -794,6 +794,7 @@ with main_col:
                                 st.error(f"Event '{event_name_input}' not found in dataset.")
                             else:
                                 event_impact_score = event_match.iloc[0]['event_impact_score']
+                                st.write("DEBUG: event_name_input =", event_name_input, type(event_name_input))
 
                                 # Step 5: Predict
                                # Step 5: Predict
