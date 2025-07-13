@@ -12,7 +12,7 @@ import json
 import time
 import pydeck as pdk
 
-GOOGLE_API_KEY = "AIzaSyCQ2gMqPA1yC_bh_eH2KRemBzHmswx5Gwk"
+
 
 # ------------------------------------------------------------
 st.set_page_config(page_title="Walmart Event Sales Predictor", layout="wide")
