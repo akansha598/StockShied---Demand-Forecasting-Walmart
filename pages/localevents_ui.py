@@ -47,18 +47,27 @@ def load_model():
 model = load_model()
 
 # ------------------------------------------------------------
-# Helper: Geocode venue name → (latitude, longitude)
-def get_lat_lon_from_address(address):
+def get_lat_lon_from_address(address, max_retries=3):
     url = "https://nominatim.openstreetmap.org/search"
     params = {"q": address, "format": "json"}
     headers = {"User-Agent": "WalmartSalesPredictor/1.0 (contact@example.com)"}
-    response = requests.get(url, params=params, headers=headers)
-    if response.status_code != 200 or not response.json():
-        raise Exception("Failed to geocode address. Try a more specific venue.")
-    data = response.json()
-    lat = float(data[0]['lat'])
-    lon = float(data[0]['lon'])
-    return lat, lon
+
+    for attempt in range(max_retries):
+        try:
+            response = requests.get(url, params=params, headers=headers, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+            if not data:
+                raise ValueError("No results returned from geocoder.")
+            lat = float(data[0]['lat'])
+            lon = float(data[0]['lon'])
+            return lat, lon
+        except Exception as e:
+            print(f"Attempt {attempt+1} failed: {e}")
+            if attempt < max_retries - 1:
+                time.sleep(2 ** attempt)
+            else:
+                raise Exception(f"Geocoding failed after {max_retries} attempts: {e}")
 
 # ------------------------------------------------------------
 # Helper: Haversine distance
