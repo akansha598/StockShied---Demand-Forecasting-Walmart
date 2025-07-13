@@ -565,7 +565,8 @@ walmart_df, events_df = load_data()
 @st.cache_resource
 def load_model():
     model = joblib.load("sales_model.pkl")
-    print("✅ Loaded model type:", type(model))
+    if not hasattr(model, 'predict'):
+        raise TypeError(f"Loaded object is not a model pipeline. Got type: {type(model)}")
     return model
 
 model = load_model()
