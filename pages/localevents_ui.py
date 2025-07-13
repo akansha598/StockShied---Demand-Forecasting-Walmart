@@ -282,7 +282,7 @@ with main_col:
 
                                 # Ensure proper column order
                                 # Make sure columns match model training
-                                if hasattr(model, 'input_features_'):
+                                if hasattr(model, 'input_features_custom'):
                                     X_input = X_input[model.input_features_]
 
                                 predicted_sales = model.predict(X_input)[0]
