@@ -7,7 +7,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 
 # Load datasets
-walmart_df = pd.read_csv('walmart_info.csv')
+walmart_df = pd.read_csv('pages/walmart_info.csv')
 events_df = pd.read_csv('city_venue_concert.csv')
 
 # Clean column names
