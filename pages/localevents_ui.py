@@ -284,7 +284,12 @@ with main_col:
                                 # Enforce correct dtypes
                                 X_input = X_input[['population', 'event_name', 'event_impact_score']]
 
-                                predicted_sales = model.predict(X_input)[0]
+                                try:
+                                    predicted_sales = model.predict(X_input)[0]
+                                except Exception as e:
+                                    st.error(f"❌ Prediction failed. Make sure event name is valid and supported. Details: {e}")
+                                    st.stop()
+
 
                                 # Step 6: Compare with past sales
                                 pct_change = ((predicted_sales - avg_monthly_sales_inr) / avg_monthly_sales_inr) * 100
