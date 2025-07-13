@@ -797,9 +797,9 @@ with main_col:
                                 # Step 5: Predict
                                # Step 5: Predict
                                 X_input = pd.DataFrame([{
-                                    'population': total_population,
-                                    'event_name': event_name_input,
-                                    'event_impact_score': event_impact_score
+                                    'population': float(total_population),
+                                    'event_name': str(event_name_input),
+                                    'event_impact_score': float(event_impact_score)
                                 }])
 
 # Ensure column order matches training data
