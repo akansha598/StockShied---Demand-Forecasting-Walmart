@@ -568,7 +568,7 @@ def load_model():
     print("✅ Loaded model type:", type(model))
     return model
 
-
+model = load_model()
 # ------------------------------------------------------------
 def get_lat_lon_from_address(address, max_retries=3):
     url = "https://nominatim.openstreetmap.org/search"
