@@ -30,6 +30,9 @@ def load_data():
         df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')
         for col in df.select_dtypes(include='object').columns:
             df[col] = df[col].str.strip()
+            
+    events_df['event_impact_score'] = pd.to_numeric(events_df['event_impact_score'], errors='coerce')
+
     return walmart_df, events_df
 
 walmart_df, events_df = load_data()
@@ -277,6 +280,12 @@ with main_col:
                                     'event_name': event_name_input,
                                     'event_impact_score': event_impact_score
                                 }])
+                                
+                                # Enforce correct dtypes
+                                X_input['population'] = pd.to_numeric(X_input['population'], errors='raise')
+                                X_input['event_impact_score'] = pd.to_numeric(X_input['event_impact_score'], errors='raise')
+
+                                st.write("Prediction Input:", X_input)
                                 predicted_sales = model.predict(X_input)[0]
 
                                 # Step 6: Compare with past sales
