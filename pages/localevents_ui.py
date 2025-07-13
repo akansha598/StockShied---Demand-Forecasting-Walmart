@@ -21,8 +21,8 @@ st.set_page_config(page_title="Walmart Event Sales Predictor", layout="wide")
 # Load data once
 @st.cache_data
 def load_data():
-    walmart_df = pd.read_csv('data/walmart_info.csv')
-    events_df = pd.read_csv('data/city_venue_concert.csv')
+    walmart_df = pd.read_csv('../data/walmart_info.csv')
+    events_df = pd.read_csv('../data/city_venue_concert.csv')
     for df in [walmart_df, events_df]:
         df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')
     return walmart_df, events_df
@@ -76,7 +76,7 @@ def show_alerts_in_sidebar_area(col):
     col.subheader("📋 Overstock Alerts")
 
     if os.path.exists("data/alerts.csv"):
-        alert_data = pd.read_csv("data/alerts.csv")
+        alert_data = pd.read_csv("../data/alerts.csv")
 
         if alert_data.empty:
             col.info("No alerts added yet.")
@@ -114,10 +114,10 @@ def show_alerts_in_sidebar_area(col):
 
 
 def find_closest_overstock_store(pred_lat, pred_lon):
-    if not os.path.exists("data/alerts.csv"):
+    if not os.path.exists("../data/alerts.csv"):
         return None
 
-    alert_data = pd.read_csv("data/alerts.csv")
+    alert_data = pd.read_csv("../data/alerts.csv")
 
     if alert_data.empty:
         return None
@@ -165,10 +165,10 @@ def find_closest_overstock_store(pred_lat, pred_lon):
 
 
 def remove_alert_row(store_name, store_location, overstock_data):
-    if not os.path.exists("data/alerts.csv"):
+    if not os.path.exists("../data/alerts.csv"):
         return
 
-    alert_data = pd.read_csv("data/alerts.csv")
+    alert_data = pd.read_csv("../data/alerts.csv")
     alert_data.columns = alert_data.columns.str.strip()
 
     # Remove matching row
@@ -180,7 +180,7 @@ def remove_alert_row(store_name, store_location, overstock_data):
         )
     ]
 
-    alert_data.to_csv("data/alerts.csv", index=False)
+    alert_data.to_csv("../data/alerts.csv", index=False)
 
 # ------------------------------------------------------------
 # Sidebar Feature Selector
@@ -450,13 +450,13 @@ with main_col:
                         "Overstock Data": alert_data
                     }])
                     try:
-                        if os.path.exists("data/alerts.csv"):
-                            existing_alerts = pd.read_csv("data/alerts.csv")
+                        if os.path.exists("../data/alerts.csv"):
+                            existing_alerts = pd.read_csv("../data/alerts.csv")
                             updated_alerts = pd.concat([existing_alerts, new_alert], ignore_index=True)
                         else:
                             updated_alerts = new_alert
 
-                        updated_alerts.to_csv("data/alerts.csv", index=False)
+                        updated_alerts.to_csv("../data/alerts.csv", index=False)
                         st.success("✅ Alert added successfully!")
                         st.rerun()
                     except Exception as e:
