@@ -28,20 +28,12 @@ def load_data():
 
     for df in [walmart_df, events_df]:
         df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')
+        for col in df.select_dtypes(include='object').columns:
+            df[col] = df[col].str.strip()
     return walmart_df, events_df
 
 walmart_df, events_df = load_data()
 
-@st.cache_data
-def geocode_address(address):
-    url = "https://maps.googleapis.com/maps/api/geocode/json"
-    params = {"address": address, "key": GOOGLE_API_KEY}
-    response = requests.get(url, params=params)
-    data = response.json()
-    if data['status'] != 'OK':
-        raise Exception(f"Geocoding failed for {address}: {data['status']}")
-    loc = data['results'][0]['geometry']['location']
-    return loc['lat'], loc['lng']
 
 # ------------------------------------------------------------
 # Load trained model once
@@ -91,7 +83,9 @@ def show_alerts_in_sidebar_area(col):
             alert_data.columns = alert_data.columns.str.strip()
 
             # 🟢 Clean data cells
-            alert_data = alert_data.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+            for col in alert_data.select_dtypes(include='object').columns:
+                alert_data[col] = alert_data[col].str.strip()
+
 
             for _, row in alert_data.iterrows():
                 store_name = row.get('Store Name', 'N/A')
@@ -130,7 +124,9 @@ def find_closest_overstock_store(pred_lat, pred_lon):
 
     # Clean columns and data
     alert_data.columns = alert_data.columns.str.strip()
-    alert_data = alert_data.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+    for col in alert_data.select_dtypes(include='object').columns:
+        alert_data[col] = alert_data[col].str.strip()
+
 
     # Add lat/lon for each alert store location using *exact* address from CSV
     for idx, row in alert_data.iterrows():
