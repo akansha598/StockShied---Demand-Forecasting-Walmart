@@ -798,10 +798,11 @@ with main_col:
                                 # Step 5: Predict
                                # Step 5: Predict
                                 X_input = pd.DataFrame({
-                                    'population': [total_population],
-                                    'event_name': [event_name_input],
-                                    'event_impact_score': [event_impact_score]
+                                    'population': pd.Series([total_population], dtype=float),
+                                    'event_name': pd.Series([event_name_input], dtype=str),
+                                    'event_impact_score': pd.Series([event_impact_score], dtype=float)
                                 })
+
 
 
 # Ensure column order matches training data
