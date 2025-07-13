@@ -82,20 +82,18 @@ def show_alerts_in_sidebar_area(col):
         if alert_data.empty:
             col.info("No alerts added yet.")
         else:
-            # 🟢 Clean headers: remove any accidental spaces
+            # Clean headers
             alert_data.columns = alert_data.columns.str.strip()
 
-            # 🟢 Clean data cells
-            for col in alert_data.select_dtypes(include='object').columns:
-                alert_data[col] = alert_data[col].str.strip()
-
+            # Clean data cells
+            for column in alert_data.select_dtypes(include='object').columns:
+                alert_data[column] = alert_data[column].str.strip()
 
             for _, row in alert_data.iterrows():
                 store_name = row.get('Store Name', 'N/A')
                 store_location = row.get('Store Location', 'N/A')
                 overstock_data = row.get('Overstock Data', 'N/A')
 
-                # 🌟 Render each alert as a pretty tile/card
                 alert_html = f"""
                     <div style="
                         background-color: #fff8f0;
