@@ -142,7 +142,7 @@ pipeline = Pipeline([
 pipeline.fit(X, y)
 
 # Save expected input column names for Streamlit
-pipeline.input_features_ = list(X.columns)
+pipeline.input_features_custom = list(X.columns)
 
 
 # Save model
