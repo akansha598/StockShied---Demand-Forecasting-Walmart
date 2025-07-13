@@ -275,19 +275,27 @@ with main_col:
                                 event_impact_score = event_match.iloc[0]['event_impact_score']
 
                                 # Step 5: Predict
+                               # Step 5: Predict
                                 X_input = pd.DataFrame([{
                                     'population': total_population,
                                     'event_name': event_name_input,
                                     'event_impact_score': event_impact_score
                                 }])
-                                
-                                # Enforce correct dtypes
+
+# Ensure column order matches training data
                                 X_input = X_input[['population', 'event_name', 'event_impact_score']]
 
                                 try:
+    # Get list of known event names from training data
+                                    valid_events = events_df['event_name'].unique().tolist()
+    
+                                    if event_name_input not in valid_events:
+                                    st.error(f"❌ Event '{event_name_input}' not in trained events list. Please use one of: {', '.join(valid_events[:5])}...")
+                                    st.stop()
+    
                                     predicted_sales = model.predict(X_input)[0]
                                 except Exception as e:
-                                    st.error(f"❌ Prediction failed. Make sure event name is valid and supported. Details: {e}")
+                                    st.error(f"❌ Prediction failed. Details: {str(e)}")
                                     st.stop()
 
 
