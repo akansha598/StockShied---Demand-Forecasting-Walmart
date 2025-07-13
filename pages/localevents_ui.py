@@ -274,21 +274,22 @@ with main_col:
                             else:
                                 event_impact_score = event_match.iloc[0]['event_impact_score']
                                 # Ensure DataFrame shape and column names match training
-                                input_data = {
-                                    
-                                    'event_name': [event_name_input],
-                                    'population': [total_population],
-                                    'event_impact_score': [event_impact_score]
-                                }
+                                X_input = pd.DataFrame([{
+                                    'population': total_population,
+                                    'event_name': event_name_input,
+                                    'event_impact_score': event_impact_score
+                                }])
 
-                                if hasattr(model, 'feature_names_in_'):
-                                    X_input = pd.DataFrame(input_data)[model.feature_names_in_]
-                                else:
-                                    X_input = pd.DataFrame(input_data)
-
-                                st.write("✅ Input to model:", X_input)
+                                # Ensure proper column order
+                                # Make sure columns match model training
+                                if hasattr(model, 'input_features_'):
+                                    X_input = X_input[model.input_features_]
 
                                 predicted_sales = model.predict(X_input)[0]
+
+
+                                
+
 
                                 # Step 5: Predict
                                # Step 5: Predict
