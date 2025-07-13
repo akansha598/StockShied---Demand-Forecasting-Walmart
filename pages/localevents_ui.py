@@ -811,27 +811,20 @@ with main_col:
 #                                 predicted_sales = model.predict(X_input)[0]
                                 X_input = pd.DataFrame({
                                     'population': [float(total_population)],
-                                    'event_name': [str(event_name_input)],
+                                    'event_name': [str(event_name_input).strip()],
                                     'event_impact_score': [float(event_impact_score)]
                                 })
 
-                                # Ensure correct order and types
-                                X_input = X_input[['population', 'event_name', 'event_impact_score']]
-                                X_input['population'] = X_input['population'].astype(float)
-                                X_input['event_impact_score'] = X_input['event_impact_score'].astype(float)
-                                X_input['event_name'] = X_input['event_name'].astype(str)
-
-                                # Debug print
-                                st.write("🔍 Input passed to model:")
-                                st.write(X_input)
+                                # Ensure correct column order
                                 X_input = X_input[['population', 'event_name', 'event_impact_score']]
 
-                                st.write("✅ Cleaned input to model:")
-                                st.write(X_input)
-                                st.write("✅ Dtypes:")
-                                st.write(X_input.dtypes)
+                                # Optional debug
+                                st.write("✅ Input to model:", X_input)
+                                st.write("✅ Input dtypes:", X_input.dtypes)
+
                                 # Predict
                                 predicted_sales = model.predict(X_input)[0]
+
 
 
                                 # Step 6: Compare with past sales
