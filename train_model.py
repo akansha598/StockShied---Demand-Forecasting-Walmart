@@ -220,62 +220,81 @@
 # print("✅ Model trained and saved as sales_model.pkl")
 # print("✅ Expected input format: population, event_name, event_impact_score")
 
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder
-from sklearn.pipeline import Pipeline
-from sklearn.ensemble import RandomForestRegressor
 import pandas as pd
 import numpy as np
 import joblib
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
 
-# Load data
+# ----------------------------------------
+# 1️⃣ Load datasets
 walmart_df = pd.read_csv('pages/walmart_info.csv')
 events_df = pd.read_csv('pages/city_venue_concert.csv')
 
-# Clean
+# Clean column names
 for df in [walmart_df, events_df]:
     df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')
-events_df['event_impact_score'] = pd.to_numeric(events_df['event_impact_score'], errors='coerce')
 
-# Synthetic data
+# Make sure impact scores are numeric
+events_df['event_impact_score'] = pd.to_numeric(events_df['event_impact_score'], errors='coerce')
+events_df = events_df.dropna(subset=['event_impact_score'])
+
+# ----------------------------------------
+# 2️⃣ Create synthetic training data
 training_data = []
 for _, store in walmart_df.iterrows():
-    pop = store['population_within_5km']
+    store_population = store['population_within_5km']
     for _, event in events_df.iterrows():
-        if pd.isna(event['event_impact_score']):
-            continue
+        event_name = event['event_name']
+        event_impact_score = event['event_impact_score']
+
         for _ in range(5):
             attendees = np.random.randint(100, 5000)
-            total_pop = pop + attendees
+            total_population = store_population + attendees
             noise = np.random.normal(0, 5000)
-            sales = total_pop * event['event_impact_score'] * np.random.uniform(15, 25) + noise
+            sales = total_population * event_impact_score * np.random.uniform(15, 25) + noise
+
             training_data.append({
-                'population': total_pop,
-                'event_name': event['event_name'],
-                'event_impact_score': event['event_impact_score'],
+                'population': total_population,
+                'event_name': event_name,
+                'event_impact_score': event_impact_score,
                 'sales': sales
             })
 
 df_train = pd.DataFrame(training_data)
 
-# Features / target
+# ----------------------------------------
+# 3️⃣ Define features and target
 X = df_train[['population', 'event_name', 'event_impact_score']]
 y = df_train['sales']
 
-# Pipeline
+# ----------------------------------------
+# 4️⃣ Build preprocessing pipeline
 preprocessor = ColumnTransformer(
     transformers=[
-        ('event_name', OneHotEncoder(handle_unknown='ignore'), ['event_name'])
+        ('onehot', OneHotEncoder(handle_unknown='ignore'), ['event_name'])
     ],
     remainder='passthrough'
 )
 
+# ----------------------------------------
+# 5️⃣ Build final pipeline
 pipeline = Pipeline([
     ('preprocessor', preprocessor),
-    ('regressor', RandomForestRegressor(n_estimators=200, max_depth=20, random_state=42))
+    ('regressor', RandomForestRegressor(
+        n_estimators=200,
+        max_depth=20,
+        random_state=42
+    ))
 ])
 
-# Fit and save
+# ----------------------------------------
+# 6️⃣ Train the pipeline
 pipeline.fit(X, y)
+
+# ----------------------------------------
+# 7️⃣ Save the pipeline
 joblib.dump(pipeline, 'sales2_model.pkl')
-print("✅ Model trained and saved correctly.")
+print("✅ Model trained and saved as sales2_model.pkl")
