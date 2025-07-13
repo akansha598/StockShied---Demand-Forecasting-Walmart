@@ -572,7 +572,7 @@ def load_model():
         raise TypeError(f"Loaded object is not a model pipeline. Got type: {type(model)}")
     return model,expected_columns
 
-model = load_model()
+model,expected_columns = load_model()
 # ------------------------------------------------------------
 def get_lat_lon_from_address(address, max_retries=3):
     url = "https://nominatim.openstreetmap.org/search"
