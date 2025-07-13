@@ -285,7 +285,8 @@ with main_col:
                                 X_input['population'] = pd.to_numeric(X_input['population'], errors='raise')
                                 X_input['event_impact_score'] = pd.to_numeric(X_input['event_impact_score'], errors='raise')
 
-                        
+                                st.write("DEBUG INPUT:", X_input)
+
                                 predicted_sales = model.predict(X_input)[0]
 
                                 # Step 6: Compare with past sales
