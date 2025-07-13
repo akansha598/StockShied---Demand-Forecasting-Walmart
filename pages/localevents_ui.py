@@ -45,7 +45,10 @@ def geocode_address(address):
 # Load trained model once
 @st.cache_resource
 def load_model():
-    return joblib.load('sales_model.pkl')
+    REPO_ROOT = os.path.dirname(os.path.dirname(__file__))
+    model_path = os.path.join(REPO_ROOT, 'sales_model.pkl')
+    return joblib.load(model_path)
+
 
 model = load_model()
 
