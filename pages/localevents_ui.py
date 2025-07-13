@@ -810,9 +810,9 @@ with main_col:
 
 #                                 predicted_sales = model.predict(X_input)[0]
                                 X_input = pd.DataFrame({
-                                    'population': pd.Series([total_population], dtype=float),
-                                    'event_name': pd.Series([event_name_input], dtype=str),
-                                    'event_impact_score': pd.Series([event_impact_score], dtype=float)
+                                    'population': [float(total_population)],
+                                    'event_name': [str(event_name_input)],
+                                    'event_impact_score': [float(event_impact_score)]
                                 })
 
                                 # Ensure correct order and types
@@ -824,7 +824,12 @@ with main_col:
                                 # Debug print
                                 st.write("🔍 Input passed to model:")
                                 st.write(X_input)
+                                X_input = X_input[['population', 'event_name', 'event_impact_score']]
 
+                                st.write("✅ Cleaned input to model:")
+                                st.write(X_input)
+                                st.write("✅ Dtypes:")
+                                st.write(X_input.dtypes)
                                 # Predict
                                 predicted_sales = model.predict(X_input)[0]
 
