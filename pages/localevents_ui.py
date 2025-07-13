@@ -797,17 +797,35 @@ with main_col:
 
                                 # Step 5: Predict
                                # Step 5: Predict
+#                                 X_input = pd.DataFrame({
+#                                     'population': pd.Series([total_population], dtype=float),
+#                                     'event_name': pd.Series([event_name_input], dtype=str),
+#                                     'event_impact_score': pd.Series([event_impact_score], dtype=float)
+#                                 })
+
+
+
+# # Ensure column order matches training data
+                                
+
+#                                 predicted_sales = model.predict(X_input)[0]
                                 X_input = pd.DataFrame({
                                     'population': pd.Series([total_population], dtype=float),
                                     'event_name': pd.Series([event_name_input], dtype=str),
                                     'event_impact_score': pd.Series([event_impact_score], dtype=float)
                                 })
 
+                                # Ensure correct order and types
+                                X_input = X_input[['population', 'event_name', 'event_impact_score']]
+                                X_input['population'] = X_input['population'].astype(float)
+                                X_input['event_impact_score'] = X_input['event_impact_score'].astype(float)
+                                X_input['event_name'] = X_input['event_name'].astype(str)
 
+                                # Debug print
+                                st.write("🔍 Input passed to model:")
+                                st.write(X_input)
 
-# Ensure column order matches training data
-                                
-
+                                # Predict
                                 predicted_sales = model.predict(X_input)[0]
 
 
