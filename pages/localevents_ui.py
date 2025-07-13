@@ -20,10 +20,8 @@ st.set_page_config(page_title="Walmart Event Sales Predictor", layout="wide")
 @st.cache_data
 def load_data():
     THIS_DIR = os.path.dirname(__file__)
-    walmart_path = os.path.join(THIS_DIR, "walmart_info.csv")
-    events_path = os.path.join(THIS_DIR, "city_venue_concert.csv")
-    walmart_df = pd.read_csv(walmart_path)
-    events_df = pd.read_csv(events_path)
+    walmart_csv = os.path.join(THIS_DIR, "walmart_info.csv")
+    events_csv = os.path.join(THIS_DIR, "city_venue_concert.csv")
     for df in [walmart_df, events_df]:
         df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')
     return walmart_df, events_df
