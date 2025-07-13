@@ -562,14 +562,22 @@ walmart_df, events_df = load_data()
 
 # model = load_model()
 
+# @st.cache_resource
+# def load_model():
+#     model = joblib.load("sales2_model.pkl")
+#     if not hasattr(model, 'predict'):
+#         raise TypeError(f"Loaded object is not a model pipeline. Got type: {type(model)}")
+#     return model
+
+# model = load_model()
+
 @st.cache_resource
 def load_model():
-    model = joblib.load("sales2_model.pkl")
-    if not hasattr(model, 'predict'):
-        raise TypeError(f"Loaded object is not a model pipeline. Got type: {type(model)}")
-    return model
+    bundle = joblib.load("sales2_model.pkl")
+    return bundle['pipeline'], bundle['expected_columns']
 
-model = load_model()
+model, expected_columns = load_model()
+
 # ------------------------------------------------------------
 def get_lat_lon_from_address(address, max_retries=3):
     url = "https://nominatim.openstreetmap.org/search"
@@ -797,11 +805,15 @@ with main_col:
 
                                 # Step 5: Predict
                                # Step 5: Predict
-                                X_input = pd.DataFrame({
-                                    'population': pd.Series([total_population], dtype=float),
-                                    'event_name': pd.Series([event_name_input], dtype=str),
-                                    'event_impact_score': pd.Series([event_impact_score], dtype=float)
-                                })
+                                # X_input = pd.DataFrame({
+                                #     'population': pd.Series([total_population], dtype=float),
+                                #     'event_name': pd.Series([event_name_input], dtype=str),
+                                #     'event_impact_score': pd.Series([event_impact_score], dtype=float)
+                                # })
+                                X_input = pd.DataFrame(
+                                    [[total_population, event_name_input, event_impact_score]],
+                                    columns=expected_columns
+                                )
 
 
 
