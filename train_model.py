@@ -228,59 +228,77 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 
-# ----------------------------------------
+# ------------------------------------------------
 # 1️⃣ Load datasets
 walmart_df = pd.read_csv('pages/walmart_info.csv')
 events_df = pd.read_csv('pages/city_venue_concert.csv')
 
-# Clean column names
+# Clean columns
 for df in [walmart_df, events_df]:
     df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')
 
-# Make sure impact scores are numeric
+# Ensure event_impact_score is numeric
 events_df['event_impact_score'] = pd.to_numeric(events_df['event_impact_score'], errors='coerce')
 events_df = events_df.dropna(subset=['event_impact_score'])
 
-# ----------------------------------------
-# 2️⃣ Create synthetic training data
+print("✅ Cleaned datasets loaded")
+
+# ------------------------------------------------
+# 2️⃣ Row-by-row synthetic data generation
 training_data = []
-for _, store in walmart_df.iterrows():
+
+for store_idx, store in walmart_df.iterrows():
     store_population = store['population_within_5km']
-    for _, event in events_df.iterrows():
-        event_name = event['event_name']
+
+    for event_idx, event in events_df.iterrows():
+        event_name = str(event['event_name']).strip()
         event_impact_score = event['event_impact_score']
 
+        if pd.isna(event_impact_score):
+            continue
+
+        # Simulate multiple variations for this store-event pair
         for _ in range(5):
             attendees = np.random.randint(100, 5000)
             total_population = store_population + attendees
             noise = np.random.normal(0, 5000)
             sales = total_population * event_impact_score * np.random.uniform(15, 25) + noise
 
+            # Append as individual clean row
             training_data.append({
-                'population': total_population,
+                'population': float(total_population),
                 'event_name': event_name,
-                'event_impact_score': event_impact_score,
-                'sales': sales
+                'event_impact_score': float(event_impact_score),
+                'sales': float(sales)
             })
 
-df_train = pd.DataFrame(training_data)
+            print(f"✅ Added training row: population={total_population}, event='{event_name}', score={event_impact_score}")
 
-# ----------------------------------------
-# 3️⃣ Define features and target
+# ------------------------------------------------
+# 3️⃣ Create final DataFrame
+df_train = pd.DataFrame(training_data)
+print("✅ All training rows generated:")
+print(df_train.head())
+
+# ------------------------------------------------
+# 4️⃣ Features and target
 X = df_train[['population', 'event_name', 'event_impact_score']]
 y = df_train['sales']
 
-# ----------------------------------------
-# 4️⃣ Build preprocessing pipeline
+print("✅ Final training data types:")
+print(X.dtypes)
+
+# ------------------------------------------------
+# 5️⃣ Preprocessing pipeline (ensures transformable input)
 preprocessor = ColumnTransformer(
     transformers=[
-        ('onehot', OneHotEncoder(handle_unknown='ignore'), ['event_name'])
+        ('event_name', OneHotEncoder(handle_unknown='ignore'), ['event_name'])
     ],
     remainder='passthrough'
 )
 
-# ----------------------------------------
-# 5️⃣ Build final pipeline
+# ------------------------------------------------
+# 6️⃣ Model pipeline
 pipeline = Pipeline([
     ('preprocessor', preprocessor),
     ('regressor', RandomForestRegressor(
@@ -290,11 +308,13 @@ pipeline = Pipeline([
     ))
 ])
 
-# ----------------------------------------
-# 6️⃣ Train the pipeline
+# ------------------------------------------------
+# 7️⃣ Fit pipeline
 pipeline.fit(X, y)
+print("✅ Pipeline fitted successfully")
 
-# ----------------------------------------
-# 7️⃣ Save the pipeline
+# ------------------------------------------------
+# 8️⃣ Save trained model
 joblib.dump(pipeline, 'sales2_model.pkl')
 print("✅ Model trained and saved as sales2_model.pkl")
+
