@@ -4,6 +4,8 @@
 StockShield is a predictive inventory management system designed for **Walmart Sparkathon 2025**.  
 It leverages **machine learning** and **real-time external data** to forecast demand, helping Walmart stores minimize **stockouts** and **overstocking**, while improving customer satisfaction.
 
+##DEMO WORKING VIDEO - https://youtu.be/1D7efjEPcO4
+
 The system integrates **three key modules**:
 1. **Weather-Driven Demand Forecasting**
 2. **Festival-Based Sales Surge Prediction**
