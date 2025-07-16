@@ -31,15 +31,3 @@ The system integrates **three key modules**:
 - **Data Source**: Walmart Store Sales Dataset (2010–2012)
 
 ---
-
-## 📊 Machine Learning Model
-- **Model Type**: LSTM (Long Short-Term Memory)  
-- **Input Features**:  
-  - **Temperature (Primary for weather module)**  
-  - Fuel Price  
-  - CPI (Consumer Price Index)  
-  - Holiday Flags  
-  - Unemployment Rate  
-- **Performance**: Achieved **low validation loss (~0.01)** on historical weekly sales data.
-
----
