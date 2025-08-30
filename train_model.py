@@ -294,6 +294,17 @@ model_bundle = {
     'scaler': scaler,
     'label_encoder': event_label_encoder
 }
+from sklearn.metrics import r2_score, mean_squared_error
+
+y_pred = sgd.predict(X_scaled)
+
+r2 = r2_score(y_batch, y_pred)
+
+mse = mean_squared_error(y_batch, y_pred)
+
+print("R² Score:", r2)
+print("MSE:", mse)
+
 
 joblib.dump(model_bundle, 'sales2_model.pkl')
 print("✅ Model trained and saved as sales2_model.pkl")
