@@ -34,3 +34,15 @@ The system integrates **three key modules**:
 - **Data Source**: Walmart Store Sales Dataset (2010–2012)
 
 ---
+<img width="1852" height="865" alt="image" src="https://github.com/user-attachments/assets/be54639b-be5b-43d9-b92c-210e983f3185" />
+
+<img width="1773" height="868" alt="image" src="https://github.com/user-attachments/assets/4c34e90b-1f24-4a56-a4e9-711805e92e3b" />
+<img width="1750" height="924" alt="image" src="https://github.com/user-attachments/assets/91eedef3-2e38-4e8b-b4fa-854cc49614d2" />
+<img width="1768" height="836" alt="image" src="https://github.com/user-attachments/assets/3697ccd6-5813-4506-9ee0-93a28ac913e6" />
+<img width="1442" height="850" alt="image" src="https://github.com/user-attachments/assets/5e501aaa-bd6b-4f53-863f-2c4d167892c9" />
+<img width="1482" height="914" alt="image" src="https://github.com/user-attachments/assets/96816a5c-370e-4352-8c13-297ad61e9239" />
+
+
+
+
+
